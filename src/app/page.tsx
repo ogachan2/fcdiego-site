@@ -1,103 +1,82 @@
+// app/page.tsx
 import Image from "next/image";
+
+const teams = ["ELAN", "MASTER", "DIEGO", "ONE HEART"];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <main className="min-h-screen bg-white text-neutral-900">
+      {/* Hero */}
+      <section className="relative h-[70vh] flex items-center">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/hero.jpg"      // ← 後で /public/ に画像を置けば表示されます
+          alt="F.C. DIEGO"
+          fill
           priority
+          className="object-cover"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4">
+          <h1 className="text-white text-4xl sm:text-6xl font-bold tracking-tight">
+            F.C. DIEGO
+          </h1>
+          <p className="text-white/90 mt-4 max-w-xl">
+            九州大学最大のサッカーサークル。挑戦と継承を胸に、日々の活動を積み重ねています。
+          </p>
+          <div className="mt-8 flex gap-3">
+            <a
+              href="/join"
+              className="inline-flex items-center rounded-md bg-white text-neutral-900 px-4 py-2 text-sm font-medium hover:bg-neutral-100"
+            >
+              新歓情報を見る
+            </a>
+            <a
+              href="https://www.instagram.com/" // ← 公式URLに差し替え
+              target="_blank"
+              className="inline-flex items-center rounded-md border border-white/70 text-white px-4 py-2 text-sm hover:bg-white/10"
+            >
+              Instagram
+            </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* About */}
+      <section className="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">About us</h2>
+        <p className="mt-4 text-neutral-700 leading-relaxed max-w-3xl">
+          F.C. DIEGO は九州大学を中心に活動するサッカーサークルです。
+          学年・レベル・役割の異なる複数のチームで構成され、誰もが主役になれる場を用意。
+          練習・大会・イベント・広報の全てで「挑戦×継承×信頼」を大切にしています。
+        </p>
+      </section>
+
+      {/* Teams */}
+      <section className="bg-neutral-50">
+        <div className="max-w-6xl mx-auto px-4 py-14">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">
+            Teams
+          </h2>
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {teams.map((t) => (
+              <div key={t} className="rounded-xl border p-6 bg-white text-center hover:shadow-sm transition">
+                <p className="text-sm tracking-wider">{t}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t">
+        <div className="max-w-6xl mx-auto px-4 py-8 text-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© {new Date().getFullYear()} F.C. DIEGO</p>
+          <div className="flex items-center gap-4">
+            <a className="underline hover:opacity-70" href="/contact">お問い合わせ</a>
+            <a className="underline hover:opacity-70" href="https://www.instagram.com/" target="_blank">Instagram</a>
+          </div>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
