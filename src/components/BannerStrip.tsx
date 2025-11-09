@@ -21,7 +21,7 @@ export default function BannerStrip({ images, height = 200, speedSec = 25 }: Pro
       {/* 2列構成でシームレスにスクロール */}
       <div className="flex whitespace-nowrap">
         <ul className="flex min-w-full flex-shrink-0 gap-4 px-4 py-3 animate-marquee" style={style}>
-          {images.map((src, i) => (
+          {images.map((src: string, i: number) => (
             <li key={`A${i}`} className="relative aspect-[16/9] h-[--h]" style={{ ["--h" as any]: `${height}px` }}>
               <Image
                 src={src}
