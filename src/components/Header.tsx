@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,11 +34,18 @@ export default function Header() {
         <Link
           href="/"
           className={[
-            "font-extrabold tracking-tight transition-all duration-300",
+            "flex items-center space-x-2 font-extrabold tracking-tight transition-all duration-300",
             scrolled ? "text-lg" : "text-2xl",
           ].join(" ")}
         >
-          F.C. DIEGO
+           <Image
+             src="/emblem.PNG"
+             alt="F.C. DIEGO emblem"
+             width={40}
+             height={40}
+             className="object-contain"
+           />
+           <span>F.C. DIEGO</span>
         </Link>
 
         {/* ナビ */}

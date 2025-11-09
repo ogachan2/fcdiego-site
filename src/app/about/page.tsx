@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import BannerStrip from "@/components/BannerStrip";
+import Image from "next/image";
 
 
 export default function AboutPage() {
@@ -8,6 +9,15 @@ export default function AboutPage() {
       {/* Hero Section */}
       <Reveal>
         <section className="text-center">
+          <div className="flex justify-center mb-0">
+           <Image
+            src="/emblem.PNG"
+            alt="F.C. DIEGO emblem"
+            width={200}   // お好みで調整
+            height={120}
+            className="rounded-none"
+            />
+         </div>
           <h1 className="text-4xl font-extrabold mb-4">F.C. DIEGO</h1>
           <p className="text-neutral-700 leading-relaxed max-w-2xl mx-auto">
             九州大学を中心に活動するサッカーサークル。週末の公式戦・対外試合・日々の活動を通じて、
