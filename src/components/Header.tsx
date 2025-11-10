@@ -53,6 +53,7 @@ export default function Header() {
          <Link href="/" className="hover:opacity-70">HOME</Link>
          <Link href="/about" className="hover:opacity-70">ABOUT</Link>
          <Link href="/results" className="hover:opacity-70">RESULTS</Link>
+         <Link href="/teams" className="hover:opacity-70">TEAMS</Link>
          <Link href="/join" className="hover:opacity-70">JOIN</Link>
          <Link href="/contact" className="hover:opacity-70">CONTACT</Link>
          <a

@@ -60,22 +60,30 @@ export default function AboutPage() {
         <section>
           <h2 className="text-3xl font-bold mb-6">Teams</h2>
           <div className="grid sm:grid-cols-2 gap-6">
-            <div className="p-6 border rounded-xl hover:shadow-md transition">
-              <h3 className="font-semibold text-lg">F.C. ELAN</h3>
-              <p className="text-neutral-600">競技志向のトップカテゴリ</p>
-            </div>
-            <div className="p-6 border rounded-xl hover:shadow-md transition">
-              <h3 className="font-semibold text-lg">F.C. DIEGO</h3>
-              <p className="text-neutral-600">バランス重視のメインカテゴリ</p>
-            </div>
-            <div className="p-6 border rounded-xl hover:shadow-md transition">
-              <h3 className="font-semibold text-lg">ONE HEART</h3>
-              <p className="text-neutral-600">初心者歓迎の育成カテゴリ</p>
-            </div>
-            <div className="p-6 border rounded-xl hover:shadow-md transition">
-              <h3 className="font-semibold text-lg">F.C. DIEGO MASTERS</h3>
-              <p className="text-neutral-600">社会人・OB中心のカテゴリ</p>
-            </div>
+            <Reveal>
+              <div className="p-6 border rounded-xl hover:shadow-md transition">
+                <h3 className="font-semibold text-lg">F.C. ELAN</h3>
+                <p className="text-neutral-600">競技志向のトップカテゴリ</p>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="p-6 border rounded-xl hover:shadow-md transition">
+                <h3 className="font-semibold text-lg">F.C. DIEGO</h3>
+                <p className="text-neutral-600">バランス重視のメインカテゴリ</p>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="p-6 border rounded-xl hover:shadow-md transition">
+                <h3 className="font-semibold text-lg">ONE HEART</h3>
+                <p className="text-neutral-600">初心者歓迎の育成カテゴリ</p>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="p-6 border rounded-xl hover:shadow-md transition">
+                <h3 className="font-semibold text-lg">F.C. DIEGO MASTERS</h3>
+                <p className="text-neutral-600">社会人・OB中心のカテゴリ</p>
+              </div>
+            </Reveal>
           </div>
         </section>
       </Reveal>
