@@ -22,7 +22,7 @@ export default function TeamElanPage() {
         <section>
           <h2 className="text-2xl font-bold mb-4">About</h2>
           <ul className="text-neutral-700 space-y-2">
-            <li>・活動方針：競技力の最大化と組織力の両立</li>
+            <li>・活動方針：競技・学業・私生活のバランスを大切に、主体的な活動を推進</li>
             <li>・主な活動：週末の試合／平日トレーニング（任意）</li>
             <li>・主将：上野幸太郎（3年）</li>
           </ul>

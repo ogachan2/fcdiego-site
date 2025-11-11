@@ -13,7 +13,7 @@ export default function TeamElanPage() {
           </div>
           <h1 className="text-3xl font-extrabold mb-2">F.C. DIEGO MASTERS</h1>
           <p className="text-neutral-700 max-w-2xl mx-auto">
-            競技志向のトップカテゴリ。九州大会・全国大会を見据えたトレーニングと試合に臨みます。
+            大学院生・社会人を中心としたカテゴリ。現役時代に培ったつながりを軸に、研究や仕事と両立しながら、サッカーを通じて交流を続けています。
           </p>
         </section>
       </Reveal>
@@ -22,7 +22,7 @@ export default function TeamElanPage() {
         <section>
           <h2 className="text-2xl font-bold mb-4">About</h2>
           <ul className="text-neutral-700 space-y-2">
-            <li>・活動方針：競技力の最大化と組織力の両立</li>
+            <li>・活動方針：競技への情熱を持ちつつ、長期的にサッカーを楽しむ環境づくり</li>
             <li>・主な活動：週末の試合／平日トレーニング（任意）</li>
             <li>・主将：荒牧大翼（修士1年）</li>
           </ul>
