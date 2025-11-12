@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="color-scheme" content="light" />
+      </head>
       <body className="bg-white text-neutral-900 antialiased">
         {/* ▼ここだけ置き換え */}
         <Header />

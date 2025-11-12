@@ -35,3 +35,8 @@ body {
 }
 .animate-marquee  { animation: marquee 30s linear infinite; }
 .animate-marquee2 { animation: marquee2 30s linear infinite; }
+
+/* globals.css の最後に追加 */
+/* # 追記: iOS/Safariの自動ダークUIを抑止 */
+:root { color-scheme: light; }
+html { -webkit-text-size-adjust: 100%; } /* iOSの勝手な文字拡大を防ぐ */
