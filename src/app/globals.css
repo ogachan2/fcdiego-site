@@ -12,10 +12,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* ↓ ダークモード無効化：ライト値で上書き */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
@@ -39,4 +40,7 @@ body {
 /* globals.css の最後に追加 */
 /* # 追記: iOS/Safariの自動ダークUIを抑止 */
 :root { color-scheme: light; }
-html { -webkit-text-size-adjust: 100%; } /* iOSの勝手な文字拡大を防ぐ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+} /* iOSの勝手な文字拡大を防ぐ */
