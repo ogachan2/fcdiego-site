@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";   // # 追加: ルート変化でメニューを閉じる
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false); // ★ モバイルメニュー開閉
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();                // # 追加
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -14,6 +16,18 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {                               // # 追加: ルート変化でドロワーを閉じる
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {                               // # 追加: メニュー開時は背景スクロール固定
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [open]);
 
   return (
     <header
@@ -59,7 +73,7 @@ export default function Header() {
           <a
             href="https://www.instagram.com/"
             target="_blank"
-            rel="noopener noreferrer" // ★ 追記（安全対策）
+            rel="noopener noreferrer"
             className="rounded-md border px-3 py-1 transition-all duration-300"
           >
             Instagram
@@ -70,10 +84,11 @@ export default function Header() {
         <button
           type="button"
           aria-label="Open menu"
-          onClick={() => setOpen(true)}         // ★
+          aria-expanded={open}                    // # 追加: ARIA
+          aria-controls="mobile-menu"             // # 追加: ARIA
+          onClick={() => setOpen(true)}
           className="sm:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-neutral-100"
         >
-          {/* 3本線アイコン */}
           <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
           </svg>
@@ -81,7 +96,7 @@ export default function Header() {
       </div>
 
       {/* モバイルメニュー（ドロワー） */}
-      {open && ( // ★
+      {open && (
         <>
           {/* 背景オーバーレイ */}
           <button
@@ -91,6 +106,7 @@ export default function Header() {
           />
           {/* 本体 */}
           <aside
+            id="mobile-menu"                      // # 追加: ARIA対応
             className="fixed right-0 top-0 z-50 h-full w-72 bg-white shadow-xl sm:hidden"
             role="dialog"
             aria-modal="true"
@@ -110,24 +126,12 @@ export default function Header() {
 
             <nav className="px-2 py-2">
               <ul className="divide-y divide-neutral-200">
-                <li>
-                  <Link href="/" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">HOME</Link>
-                </li>
-                <li>
-                  <Link href="/about" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">ABOUT</Link>
-                </li>
-                <li>
-                  <Link href="/results" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">RESULTS</Link>
-                </li>
-                <li>
-                  <Link href="/teams" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">TEAMS</Link>
-                </li>
-                <li>
-                  <Link href="/join" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">JOIN</Link>
-                </li>
-                <li>
-                  <Link href="/contact" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">CONTACT</Link>
-                </li>
+                <li><Link href="/"        onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">HOME</Link></li>
+                <li><Link href="/about"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">ABOUT</Link></li>
+                <li><Link href="/results" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">RESULTS</Link></li>
+                <li><Link href="/teams"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">TEAMS</Link></li>
+                <li><Link href="/join"    onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">JOIN</Link></li>
+                <li><Link href="/contact" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">CONTACT</Link></li>
                 <li>
                   <a
                     href="https://www.instagram.com/"

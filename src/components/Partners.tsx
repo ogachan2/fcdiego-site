@@ -27,45 +27,47 @@ export default function Partners() {
   if (!mounted) return null;
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-16">
-      <Reveal>
-        <h2 className="mb-8 text-center text-xs font-semibold tracking-[0.25em] text-neutral-500">
-          CLUB PARTNERS
-        </h2>
-      </Reveal>
+    <section className="bg-white">  {/* ← 背景を必ず白に */}
+      <div className="mx-auto w-full max-w-6xl px-4 py-16"> {/* 元の余白は内側へ */}
+        <Reveal>
+          <h2 className="mb-8 text-center text-xs font-semibold tracking-[0.25em] text-neutral-500">
+            CLUB PARTNERS
+          </h2>
+        </Reveal>
 
-      <Reveal>
-        <ul className="grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-4">
-          {DUMMY_PARTNERS.map((p) => (
-            <li key={p.name} className="flex justify-center">
-              <a
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex w-full items-center justify-center rounded-xl border border-neutral-200 bg-white/70 p-6 shadow-sm transition hover:shadow-md"
-                aria-label={p.name}
-                title={p.name}
-              >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  className="h-10 w-auto object-contain opacity-80 transition group-hover:opacity-100"
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
+        <Reveal>
+          <ul className="grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-4">
+            {DUMMY_PARTNERS.map((p) => (
+              <li key={p.name} className="flex justify-center">
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex w-full items-center justify-center rounded-xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:shadow-md"  /* ← 透過をやめて純白に */
+                  aria-label={p.name}
+                  title={p.name}
+                >
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    className="h-10 w-auto object-contain opacity-80 transition group-hover:opacity-100"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-      <Reveal>
-        <p className="mt-8 text-center text-sm text-neutral-500">
-          現在クラブパートナーを募集しています。詳細は{" "}
-          <a href="/contact" className="underline underline-offset-4 hover:text-neutral-700">
-            Contact
-          </a>
-          からご連絡ください。
-        </p>
-      </Reveal>
+        <Reveal>
+          <p className="mt-8 text-center text-sm text-neutral-600">
+            現在クラブパートナーを募集しています。詳細は{" "}
+            <a href="/contact" className="underline underline-offset-4 hover:text-neutral-700">
+              Contact
+            </a>
+            からご連絡ください。
+          </p>
+        </Reveal>
+      </div>
     </section>
   );
 }
