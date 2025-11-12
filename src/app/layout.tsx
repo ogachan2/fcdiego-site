@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header"; // ← 追加
+import Partners from "@/components/Partners";
 
 export const metadata: Metadata = {
   title: "F.C. DIEGO",
@@ -17,6 +18,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Page */}
         <main className="flex-1">{children}</main>
+
+        {/* ← ここにクラブパートナー */}
+        <Partners />
+
+        {/* フッターがあればこの下に */}
+        {/* <Footer /> */}
       </body>
     </html>
   );
