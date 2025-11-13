@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";   // ルート変化でメニューを閉じる
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // スクロールでヘッダー縮小
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -17,7 +18,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ルートが変わったらメニューを閉じる
+  // ページ遷移したら閉じる
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -34,86 +35,101 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header
-      className={[
-        "sticky top-0 z-50 transition-all duration-300",
-        "backdrop-blur bg-white/80",
-        scrolled ? "shadow-sm" : "shadow-none",
-      ].join(" ")}
-    >
-      <div
+    <>
+      {/* ==== ヘッダー本体 ==== */}
+      <header
         className={[
-          "mx-auto max-w-6xl flex items-center justify-between px-4",
-          "transition-all duration-300",
-          scrolled ? "h-14" : "h-20",
+          "sticky top-0 z-50 transition-all duration-300",
+          "backdrop-blur bg-white/80",
+          scrolled ? "shadow-sm" : "shadow-none",
         ].join(" ")}
       >
-        {/* ロゴ */}
-        <Link
-          href="/"
+        <div
           className={[
-            "flex items-center space-x-2 font-extrabold tracking-tight transition-all duration-300",
-            scrolled ? "text-lg" : "text-2xl",
+            "mx-auto max-w-6xl flex items-center justify-between px-4",
+            "transition-all duration-300",
+            scrolled ? "h-14" : "h-20",
           ].join(" ")}
         >
-          <Image
-            src="/emblem.PNG"
-            alt="F.C. DIEGO emblem"
-            width={40}
-            height={40}
-            className="object-contain"
-          />
-          <span>F.C. DIEGO</span>
-        </Link>
-
-        {/* ナビ（PC/タブレット） */}
-        <nav className="hidden sm:flex items-center gap-5 text-sm">
-          <Link href="/" className="hover:opacity-70">HOME</Link>
-          <Link href="/about" className="hover:opacity-70">ABOUT</Link>
-          <Link href="/results" className="hover:opacity-70">RESULTS</Link>
-          <Link href="/teams" className="hover:opacity-70">TEAMS</Link>
-          <Link href="/join" className="hover:opacity-70">JOIN</Link>
-          <Link href="/contact" className="hover:opacity-70">CONTACT</Link>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md border px-3 py-1 transition-all duration-300"
+          {/* ロゴ */}
+          <Link
+            href="/"
+            className={[
+              "flex items-center space-x-2 font-extrabold tracking-tight transition-all duration-300",
+              scrolled ? "text-lg" : "text-2xl",
+            ].join(" ")}
           >
-            Instagram
-          </a>
-        </nav>
-
-        {/* ハンバーガー（スマホ） */}
-        <button
-          type="button"
-          aria-label="Open menu"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen(true)}
-          className="sm:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-neutral-100"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M4 6h16M4 12h16M4 18h16"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              fill="none"
+            <Image
+              src="/emblem.PNG"
+              alt="F.C. DIEGO emblem"
+              width={40}
+              height={40}
+              className="object-contain"
             />
-          </svg>
-        </button>
-      </div>
+            <span>F.C. DIEGO</span>
+          </Link>
 
-      {/* === ここからモバイルメニュー（フルスクリーン白背景） === */}
+          {/* ナビ（PC/タブレット） */}
+          <nav className="hidden sm:flex items-center gap-5 text-sm">
+            <Link href="/" className="hover:opacity-70">
+              HOME
+            </Link>
+            <Link href="/about" className="hover:opacity-70">
+              ABOUT
+            </Link>
+            <Link href="/results" className="hover:opacity-70">
+              RESULTS
+            </Link>
+            <Link href="/teams" className="hover:opacity-70">
+              TEAMS
+            </Link>
+            <Link href="/join" className="hover:opacity-70">
+              JOIN
+            </Link>
+            <Link href="/contact" className="hover:opacity-70">
+              CONTACT
+            </Link>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md border px-3 py-1 transition-all duration-300"
+            >
+              Instagram
+            </a>
+          </nav>
+
+          {/* ハンバーガー（スマホ） */}
+          <button
+            type="button"
+            aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(true)}
+            className="sm:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-neutral-100"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      {/* ==== モバイルメニュー（ヘッダーの外・全画面） ==== */}
       {open && (
         <div
           id="mobile-menu"
-          className="fixed inset-0 z-40 sm:hidden bg-white overflow-y-auto"
+          className="fixed inset-0 z-[9999] bg-white sm:hidden overflow-y-auto"
           role="dialog"
           aria-modal="true"
         >
-          {/* 上部バー（Menu + ×） */}
+          {/* 上のバー（Menu + ×） */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
             <span className="font-semibold text-lg">Menu</span>
             <button
@@ -133,7 +149,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* メニュー本体 */}
+          {/* メニュー項目 */}
           <nav className="px-4 py-4">
             <ul className="space-y-2 text-base">
               <li>
@@ -205,7 +221,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-      {/* === モバイルメニューここまで === */}
-    </header>
+    </>
   );
 }
