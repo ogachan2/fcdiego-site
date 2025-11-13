@@ -25,7 +25,9 @@ export default function Header() {
     if (open) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = prev; };
+      return () => {
+        document.body.style.overflow = prev;
+      };
     }
   }, [open]);
 
@@ -64,12 +66,24 @@ export default function Header() {
 
         {/* ナビ（PC/タブレット） */}
         <nav className="hidden sm:flex items-center gap-5 text-sm">
-          <Link href="/" className="hover:opacity-70">HOME</Link>
-          <Link href="/about" className="hover:opacity-70">ABOUT</Link>
-          <Link href="/results" className="hover:opacity-70">RESULTS</Link>
-          <Link href="/teams" className="hover:opacity-70">TEAMS</Link>
-          <Link href="/join" className="hover:opacity-70">JOIN</Link>
-          <Link href="/contact" className="hover:opacity-70">CONTACT</Link>
+          <Link href="/" className="hover:opacity-70">
+            HOME
+          </Link>
+          <Link href="/about" className="hover:opacity-70">
+            ABOUT
+          </Link>
+          <Link href="/results" className="hover:opacity-70">
+            RESULTS
+          </Link>
+          <Link href="/teams" className="hover:opacity-70">
+            TEAMS
+          </Link>
+          <Link href="/join" className="hover:opacity-70">
+            JOIN
+          </Link>
+          <Link href="/contact" className="hover:opacity-70">
+            CONTACT
+          </Link>
           <a
             href="https://www.instagram.com/"
             target="_blank"
@@ -84,29 +98,32 @@ export default function Header() {
         <button
           type="button"
           aria-label="Open menu"
-          aria-expanded={open}                    // # 追加: ARIA
-          aria-controls="mobile-menu"             // # 追加: ARIA
+          aria-expanded={open} // # ARIA
+          aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
           className="sm:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-neutral-100"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path
+              d="M4 6h16M4 12h16M4 18h16"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+            />
           </svg>
         </button>
       </div>
 
-      {/* モバイルメニュー（ドロワー） */}
-      <aside
-        id="mobile-menu"
-        className={[
-          "fixed right-0 top-0 bottom-0 z-40 w-72 bg-white shadow-xl sm:hidden",
-          "transform transition-transform duration-300",
-          open ? "translate-x-0" : "translate-x-full pointer-events-none",
-        ].join(" ")}
-        role="dialog"
-        aria-modal="true"
-      >
-        <div className="flex h-full flex-col bg-white">
+      {/* ===== モバイルメニュー（全画面ホワイト） ===== */}
+      {open && (
+        <div
+          id="mobile-menu"
+          className="fixed inset-0 z-40 bg-white sm:hidden"
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* 上部バー */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
             <span className="font-semibold">Menu</span>
             <button
@@ -126,14 +143,63 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="px-2 py-2 flex-1 overflow-y-auto">
-            <ul className="divide-y divide-neutral-200 bg-white">
-              <li><Link href="/"        onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">HOME</Link></li>
-              <li><Link href="/about"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">ABOUT</Link></li>
-              <li><Link href="/results" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">RESULTS</Link></li>
-              <li><Link href="/teams"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">TEAMS</Link></li>
-              <li><Link href="/join"    onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">JOIN</Link></li>
-              <li><Link href="/contact" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">CONTACT</Link></li>
+          {/* メニュー本体 */}
+          <nav className="px-2 py-2">
+            <ul className="divide-y divide-neutral-200">
+              <li>
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  ABOUT
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/results"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  RESULTS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/teams"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  TEAMS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/join"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  JOIN
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  CONTACT
+                </Link>
+              </li>
               <li>
                 <a
                   href="https://www.instagram.com/"
@@ -148,7 +214,7 @@ export default function Header() {
             </ul>
           </nav>
         </div>
-      </aside>
+      )}
     </header>
   );
 }
