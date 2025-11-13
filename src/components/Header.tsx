@@ -121,106 +121,111 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ==== モバイルメニュー（ヘッダーの外・全画面） ==== */}
-      {open && (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 z-[9999] bg-white sm:hidden overflow-y-auto"
-          role="dialog"
-          aria-modal="true"
-        >
-          {/* 上のバー（Menu + ×） */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
-            <span className="font-semibold text-lg">Menu</span>
-            <button
-              aria-label="Close menu"
-              onClick={() => setOpen(false)}
-              className="rounded-md p-2 hover:bg-neutral-100"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* メニュー項目 */}
-          <nav className="px-4 py-4">
-            <ul className="space-y-2 text-base">
-              <li>
-                <Link
-                  href="/"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  HOME
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  ABOUT
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/results"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  RESULTS
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/teams"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  TEAMS
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/join"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  JOIN
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  CONTACT
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
-                >
-                  Instagram
-                </a>
-              </li>
-            </ul>
-          </nav>
+      {/* ==== モバイルメニュー（全画面、アニメーション付き） ==== */}
+      <div
+        id="mobile-menu"
+        className={[
+          "fixed inset-0 z-[9999] sm:hidden overflow-y-auto bg-white",
+          "transition-transform transition-opacity duration-300",
+          open
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-3 pointer-events-none",
+        ].join(" ")}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!open}
+      >
+        {/* 上のバー（Menu + ×） */}
+        <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
+          <span className="font-semibold text-lg">Menu</span>
+          <button
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+            className="rounded-md p-2 hover:bg-neutral-100"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6 6l12 12M18 6L6 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </button>
         </div>
-      )}
+
+        {/* メニュー項目 */}
+        <nav className="px-4 py-4">
+          <ul className="space-y-2 text-base">
+            <li>
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                ABOUT
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/results"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                RESULTS
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/teams"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                TEAMS
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/join"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                JOIN
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                CONTACT
+              </Link>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              >
+                Instagram
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </>
   );
 }
