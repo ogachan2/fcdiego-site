@@ -107,7 +107,7 @@ export default function Header() {
         <button
           aria-label="Close menu backdrop"
           onClick={() => setOpen(false)}
-          className="absolute inset-0 bg-transparent"
+          className="absolute left-0 right-0 top-20 bottom-0 bg-white"
         />
         {/* 本体 */}
         <aside
