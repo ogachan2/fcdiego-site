@@ -103,17 +103,17 @@ export default function Header() {
         ].join(" ")}
         aria-hidden={!open}
       >
-        {/* 背景オーバーレイ（透明・クリックで閉じる） */}
+        {/* 背景オーバーレイ（実質非表示・クリックで閉じるだけ） */}
         <button
           aria-label="Close menu backdrop"
           onClick={() => setOpen(false)}
-          className="absolute left-0 right-0 top-20 bottom-0 bg-white"
+          className="absolute inset-0 bg-transparent"
         />
         {/* 本体 */}
         <aside
           id="mobile-menu"                      // # 追加: ARIA対応
           className={[
-            "absolute right-0 top-0 z-50 h-full w-72 bg-white shadow-xl",
+            "absolute right-0 top-0 z-50 h-full w-full bg-white shadow-xl",
             "transform transition-transform duration-300",
             open ? "translate-x-0" : "translate-x-full",
           ].join(" ")}
