@@ -96,58 +96,66 @@ export default function Header() {
       </div>
 
       {/* モバイルメニュー（ドロワー） */}
-      {open && (
-        <>
-          {/* 背景オーバーレイ */}
-          <button
-            aria-label="Close menu backdrop"
-            onClick={() => setOpen(false)}
-            className="fixed inset-0 z-40 bg-black/40 sm:hidden"
-          />
-          {/* 本体 */}
-          <aside
-            id="mobile-menu"                      // # 追加: ARIA対応
-            className="fixed right-0 top-0 z-50 h-full w-72 bg-white shadow-xl sm:hidden"
-            role="dialog"
-            aria-modal="true"
-          >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
-              <span className="font-semibold">Menu</span>
-              <button
-                aria-label="Close menu"
-                onClick={() => setOpen(false)}
-                className="rounded-md p-2 hover:bg-neutral-100"
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                </svg>
-              </button>
-            </div>
+      <div
+        className={[
+          "fixed inset-0 z-40 sm:hidden transition-opacity duration-300",
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
+        ].join(" ")}
+        aria-hidden={!open}
+      >
+        {/* 背景オーバーレイ */}
+        <button
+          aria-label="Close menu backdrop"
+          onClick={() => setOpen(false)}
+          className="absolute inset-0 bg-white/70 backdrop-blur-sm"
+        />
+        {/* 本体 */}
+        <aside
+          id="mobile-menu"                      // # 追加: ARIA対応
+          className={[
+            "absolute right-0 top-0 z-50 h-full w-72 bg-white shadow-xl",
+            "transform transition-transform duration-300",
+            open ? "translate-x-0" : "translate-x-full",
+          ].join(" ")}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
+            <span className="font-semibold">Menu</span>
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="rounded-md p-2 hover:bg-neutral-100"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+              </svg>
+            </button>
+          </div>
 
-            <nav className="px-2 py-2">
-              <ul className="divide-y divide-neutral-200">
-                <li><Link href="/"        onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">HOME</Link></li>
-                <li><Link href="/about"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">ABOUT</Link></li>
-                <li><Link href="/results" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">RESULTS</Link></li>
-                <li><Link href="/teams"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">TEAMS</Link></li>
-                <li><Link href="/join"    onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">JOIN</Link></li>
-                <li><Link href="/contact" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">CONTACT</Link></li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
-                    className="block px-4 py-3 hover:bg-neutral-50"
-                  >
-                    Instagram
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </aside>
-        </>
-      )}
+          <nav className="px-2 py-2">
+            <ul className="divide-y divide-neutral-200">
+              <li><Link href="/"        onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">HOME</Link></li>
+              <li><Link href="/about"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">ABOUT</Link></li>
+              <li><Link href="/results" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">RESULTS</Link></li>
+              <li><Link href="/teams"   onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">TEAMS</Link></li>
+              <li><Link href="/join"    onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">JOIN</Link></li>
+              <li><Link href="/contact" onClick={() => setOpen(false)} className="block px-4 py-3 hover:bg-neutral-50">CONTACT</Link></li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="block px-4 py-3 hover:bg-neutral-50"
+                >
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
     </header>
   );
 }
