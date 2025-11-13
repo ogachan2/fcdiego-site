@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";   // ルート変化でメニュ�
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const pathname = usePathname();                // 追加
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -17,7 +17,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ルート遷移でメニューを閉じる
+  // ルート変化でドロワーを閉じる
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -84,7 +84,7 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* ハンバーガー（スマホのみ） */}
+        {/* ハンバーガー（スマホのみ表示） */}
         <button
           type="button"
           aria-label="Open menu"
@@ -109,102 +109,100 @@ export default function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="fixed inset-0 z-[60] bg-white sm:hidden overflow-y-auto"
+          className="fixed inset-0 z-40 bg-white sm:hidden flex flex-col"
           role="dialog"
           aria-modal="true"
         >
-          <div className="mx-auto max-w-6xl px-4 pt-4 pb-8">
-            {/* 上部バー */}
-            <div className="mb-6 flex items-center justify-between">
-              <span className="font-semibold text-lg">Menu</span>
-              <button
-                aria-label="Close menu"
-                onClick={() => setOpen(false)}
-                className="rounded-md p-2 hover:bg-neutral-100"
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M6 6l12 12M18 6L6 18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* メニュー本体 */}
-            <nav>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    HOME
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    ABOUT
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/results"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    RESULTS
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/teams"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    TEAMS
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/join"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    JOIN
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    CONTACT
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
-                  >
-                    Instagram
-                  </a>
-                </li>
-              </ul>
-            </nav>
+          {/* 上部バー */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
+            <span className="font-semibold text-lg">Menu</span>
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="rounded-md p-2 hover:bg-neutral-100"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+            </button>
           </div>
+
+          {/* メニュー本体 */}
+          <nav className="px-4 py-4">
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  ABOUT
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/results"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  RESULTS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/teams"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  TEAMS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/join"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  JOIN
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  CONTACT
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                >
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       )}
     </header>
