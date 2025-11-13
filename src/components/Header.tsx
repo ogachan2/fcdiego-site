@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";   // # 追加: ルート変化でメニューを閉じる
+import { usePathname } from "next/navigation";   // ルート変化でメニューを閉じる
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();                // # 追加
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -17,15 +17,19 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {                               // # 追加: ルート変化でドロワーを閉じる
+  // ルートが変わったらメニューを閉じる
+  useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  useEffect(() => {                               // # 追加: メニュー開時は背景スクロール固定
+  // メニュー開いている間はスクロールロック
+  useEffect(() => {
     if (open) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = prev; };
+      return () => {
+        document.body.style.overflow = prev;
+      };
     }
   }, [open]);
 
@@ -80,32 +84,36 @@ export default function Header() {
           </a>
         </nav>
 
-        {/* ハンバーガー（スマホのみ表示） */}
+        {/* ハンバーガー（スマホ） */}
         <button
           type="button"
           aria-label="Open menu"
-          aria-expanded={open}                    // # 追加: ARIA
-          aria-controls="mobile-menu"             // # 追加: ARIA
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
           className="sm:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-neutral-100"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path
+              d="M4 6h16M4 12h16M4 18h16"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="none"
+            />
           </svg>
         </button>
       </div>
 
-      {/* モバイルメニュー（ドロワー） */}
+      {/* === ここからモバイルメニュー（フルスクリーン白背景） === */}
       {open && (
         <div
           id="mobile-menu"
-          // ★ここだけ変更：inset-0 をやめて、明示的に四辺0 + inline styleで真っ白にする
-          className="fixed left-0 right-0 top-0 bottom-0 z-40 sm:hidden flex flex-col"
-          style={{ backgroundColor: "#ffffff" }}
+          className="fixed inset-0 z-40 sm:hidden bg-white overflow-y-auto"
           role="dialog"
           aria-modal="true"
         >
-          {/* 上部バー */}
+          {/* 上部バー（Menu + ×） */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
             <span className="font-semibold text-lg">Menu</span>
             <button
@@ -114,19 +122,25 @@ export default function Header() {
               className="rounded-md p-2 hover:bg-neutral-100"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                />
               </svg>
             </button>
           </div>
 
           {/* メニュー本体 */}
           <nav className="px-4 py-4">
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-base">
               <li>
                 <Link
                   href="/"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   HOME
                 </Link>
@@ -135,7 +149,7 @@ export default function Header() {
                 <Link
                   href="/about"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   ABOUT
                 </Link>
@@ -144,7 +158,7 @@ export default function Header() {
                 <Link
                   href="/results"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   RESULTS
                 </Link>
@@ -153,7 +167,7 @@ export default function Header() {
                 <Link
                   href="/teams"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   TEAMS
                 </Link>
@@ -162,7 +176,7 @@ export default function Header() {
                 <Link
                   href="/join"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   JOIN
                 </Link>
@@ -171,7 +185,7 @@ export default function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   CONTACT
                 </Link>
@@ -182,7 +196,7 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="block px-2 py-3 text-base hover:bg-neutral-50 rounded-md"
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
                   Instagram
                 </a>
@@ -191,6 +205,7 @@ export default function Header() {
           </nav>
         </div>
       )}
+      {/* === モバイルメニューここまで === */}
     </header>
   );
 }
