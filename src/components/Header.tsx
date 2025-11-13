@@ -126,7 +126,8 @@ export default function Header() {
         id="mobile-menu"
         className={[
           "fixed inset-0 z-[9999] sm:hidden overflow-y-auto bg-white",
-          "transition-transform transition-opacity duration-300",
+          // ★ここを滑らかに：duration-500 & ease-in-out
+          "transition-all duration-500 ease-in-out",
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-3 pointer-events-none",
