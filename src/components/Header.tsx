@@ -103,11 +103,11 @@ export default function Header() {
         ].join(" ")}
         aria-hidden={!open}
       >
-        {/* 背景オーバーレイ */}
+        {/* 背景オーバーレイ（完全白） */}
         <button
           aria-label="Close menu backdrop"
           onClick={() => setOpen(false)}
-          className="absolute inset-0 bg-white/70 backdrop-blur-sm"
+          className="absolute inset-0 bg-white"
         />
         {/* 本体 */}
         <aside
