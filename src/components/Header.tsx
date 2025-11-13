@@ -126,7 +126,7 @@ export default function Header() {
         id="mobile-menu"
         className={[
           "fixed inset-0 z-[9999] sm:hidden overflow-y-auto bg-white",
-          // ★ここを滑らかに：duration-500 & ease-in-out
+          // メニュー全体のフェード＋少しだけ上下スライド
           "transition-all duration-500 ease-in-out",
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
@@ -159,7 +159,13 @@ export default function Header() {
         {/* メニュー項目 */}
         <nav className="px-4 py-4">
           <ul className="space-y-2 text-base">
-            <li>
+            {/* 1個目 */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.05s" : "0s" }}
+            >
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
@@ -168,7 +174,14 @@ export default function Header() {
                 HOME
               </Link>
             </li>
-            <li>
+
+            {/* 2個目 */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.10s" : "0s" }}
+            >
               <Link
                 href="/about"
                 onClick={() => setOpen(false)}
@@ -177,7 +190,14 @@ export default function Header() {
                 ABOUT
               </Link>
             </li>
-            <li>
+
+            {/* 3個目 */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.15s" : "0s" }}
+            >
               <Link
                 href="/results"
                 onClick={() => setOpen(false)}
@@ -186,7 +206,14 @@ export default function Header() {
                 RESULTS
               </Link>
             </li>
-            <li>
+
+            {/* 4個目 */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.20s" : "0s" }}
+            >
               <Link
                 href="/teams"
                 onClick={() => setOpen(false)}
@@ -195,7 +222,14 @@ export default function Header() {
                 TEAMS
               </Link>
             </li>
-            <li>
+
+            {/* 5個目 */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.25s" : "0s" }}
+            >
               <Link
                 href="/join"
                 onClick={() => setOpen(false)}
@@ -204,7 +238,14 @@ export default function Header() {
                 JOIN
               </Link>
             </li>
-            <li>
+
+            {/* 6個目 */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.30s" : "0s" }}
+            >
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}
@@ -213,7 +254,14 @@ export default function Header() {
                 CONTACT
               </Link>
             </li>
-            <li>
+
+            {/* 7個目（Instagram） */}
+            <li
+              className={`transition-all duration-500 ease-out ${
+                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+              }`}
+              style={{ transitionDelay: open ? "0.35s" : "0s" }}
+            >
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
