@@ -308,7 +308,7 @@ export default function Header() {
           >
             <span className="text-xs text-neutral-500">Official Accounts</span>
             <div className="flex items-center gap-3">
-              {/* Instagram */}
+              {/* Instagram（ブランドカラー寄せ） */}
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
@@ -331,22 +331,22 @@ export default function Header() {
                     rx="5"
                     ry="5"
                     fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
+                    stroke="#E4405F"
+                    strokeWidth="1.8"
                   />
                   <circle
                     cx="12"
                     cy="12"
-                    r="4"
+                    r="4.2"
                     fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
+                    stroke="#E4405F"
+                    strokeWidth="1.8"
                   />
-                  <circle cx="17" cy="7" r="1" fill="currentColor" />
+                  <circle cx="17" cy="7" r="1.2" fill="#E4405F" />
                 </svg>
               </a>
 
-              {/* note（シンプルなメモ風アイコン） */}
+              {/* note（公式カラー寄せ） */}
               <a
                 href="https://note.com/"
                 target="_blank"
@@ -361,23 +361,20 @@ export default function Header() {
                   height="16"
                   aria-hidden="true"
                 >
+                  {/* 背景（noteカラー） */}
                   <rect
-                    x="5"
-                    y="4"
-                    width="14"
-                    height="16"
-                    rx="2"
-                    ry="2"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="4"
+                    ry="4"
+                    fill="#41c9b4"
                   />
-                  <polyline
-                    points="13,4 13,9 18,9"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinejoin="round"
+                  {/* ノートの形 */}
+                  <path
+                    d="M9 7h6v6h-3.5L9 15.5V7z"
+                    fill="#ffffff"
                   />
                 </svg>
               </a>
