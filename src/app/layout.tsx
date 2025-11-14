@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header"; // ← 追加
 import Partners from "@/components/Partners";
+import Footer from "@/components/Footer";
+
 
 export const metadata: Metadata = {
   title: "F.C. DIEGO",
@@ -27,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Partners />
 
         {/* フッターがあればこの下に */}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
