@@ -25,13 +25,12 @@ export default function Header() {
 
   // メニュー開いている間はスクロールロック
   useEffect(() => {
-    if (open) {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = prev;
-      };
-    }
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [open]);
 
   return (
@@ -121,159 +120,270 @@ export default function Header() {
         </div>
       </header>
 
-      {/* ==== モバイルメニュー（全画面、アニメーション付き） ==== */}
+      {/* ==== モバイルメニュー（右からスライドイン、後ろが少し見える） ==== */}
       <div
         id="mobile-menu"
         className={[
-          "fixed inset-0 z-[9999] sm:hidden overflow-y-auto bg-white",
-          // メニュー全体のフェード＋少しだけ上下スライド
-          "transition-all duration-500 ease-in-out",
-          open
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-3 pointer-events-none",
+          "fixed inset-0 z-[9999] sm:hidden",
+          "transition-opacity duration-300",
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         ].join(" ")}
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
       >
-        {/* 上のバー（Menu + ×） */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
-          <span className="font-semibold text-lg">Menu</span>
-          <button
-            aria-label="Close menu"
-            onClick={() => setOpen(false)}
-            className="rounded-md p-2 hover:bg-neutral-100"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M6 6l12 12M18 6L6 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                fill="none"
+        {/* 背景オーバーレイ（サイトがうっすら見える） */}
+        <button
+          aria-label="Close menu backdrop"
+          onClick={() => setOpen(false)}
+          className="absolute inset-0 bg-black/30"
+        />
+
+        {/* 右からスライドインする本体（白を少し透かす） */}
+        <aside
+          className={[
+            "absolute right-0 top-0 h-full w-72 max-w-[80%]",
+            "bg-white/90 backdrop-blur-md shadow-2xl",
+            "flex flex-col",
+            "transform transition-transform duration-300 ease-out",
+            open ? "translate-x-0" : "translate-x-full",
+          ].join(" ")}
+        >
+          {/* 上のバー：エンブレム + タイトル + × */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/emblem.PNG"
+                alt="F.C. DIEGO emblem"
+                width={28}
+                height={28}
+                className="object-contain rounded-full"
               />
-            </svg>
-          </button>
-        </div>
-
-        {/* メニュー項目 */}
-        <nav className="px-4 py-4">
-          <ul className="space-y-2 text-base">
-            {/* 1個目 */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.05s" : "0s" }}
+              <span className="text-sm font-semibold tracking-wide">
+                F.C. DIEGO
+              </span>
+            </div>
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="rounded-md p-2 hover:bg-neutral-100"
             >
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* メニュー項目（左寄せ・時差フェードイン） */}
+          <nav className="flex-1 overflow-y-auto px-4 py-4">
+            <ul className="space-y-1 text-base">
+              {/* 1 */}
+              <li
+                className={[
+                  "transition-all duration-400 ease-out",
+                  open
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2",
+                ].join(" ")}
+                style={{ transitionDelay: open ? "0.06s" : "0s" }}
               >
-                HOME
-              </Link>
-            </li>
-
-            {/* 2個目 */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.10s" : "0s" }}
-            >
-              <Link
-                href="/about"
-                onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                >
+                  HOME
+                </Link>
+              </li>
+              {/* 2 */}
+              <li
+                className={[
+                  "transition-all duration-400 ease-out",
+                  open
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2",
+                ].join(" ")}
+                style={{ transitionDelay: open ? "0.12s" : "0s" }}
               >
-                ABOUT
-              </Link>
-            </li>
-
-            {/* 3個目 */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.15s" : "0s" }}
-            >
-              <Link
-                href="/results"
-                onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                <Link
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                >
+                  ABOUT
+                </Link>
+              </li>
+              {/* 3 */}
+              <li
+                className={[
+                  "transition-all duration-400 ease-out",
+                  open
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2",
+                ].join(" ")}
+                style={{ transitionDelay: open ? "0.18s" : "0s" }}
               >
-                RESULTS
-              </Link>
-            </li>
-
-            {/* 4個目 */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.20s" : "0s" }}
-            >
-              <Link
-                href="/teams"
-                onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                <Link
+                  href="/results"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                >
+                  RESULTS
+                </Link>
+              </li>
+              {/* 4 */}
+              <li
+                className={[
+                  "transition-all duration-400 ease-out",
+                  open
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2",
+                ].join(" ")}
+                style={{ transitionDelay: open ? "0.24s" : "0s" }}
               >
-                TEAMS
-              </Link>
-            </li>
-
-            {/* 5個目 */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.25s" : "0s" }}
-            >
-              <Link
-                href="/join"
-                onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                <Link
+                  href="/teams"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                >
+                  TEAMS
+                </Link>
+              </li>
+              {/* 5 */}
+              <li
+                className={[
+                  "transition-all duration-400 ease-out",
+                  open
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2",
+                ].join(" ")}
+                style={{ transitionDelay: open ? "0.30s" : "0s" }}
               >
-                JOIN
-              </Link>
-            </li>
-
-            {/* 6個目 */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.30s" : "0s" }}
-            >
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                <Link
+                  href="/join"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                >
+                  JOIN
+                </Link>
+              </li>
+              {/* 6 */}
+              <li
+                className={[
+                  "transition-all duration-400 ease-out",
+                  open
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2",
+                ].join(" ")}
+                style={{ transitionDelay: open ? "0.36s" : "0s" }}
               >
-                CONTACT
-              </Link>
-            </li>
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                >
+                  CONTACT
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-            {/* 7個目（Instagram） */}
-            <li
-              className={`transition-all duration-500 ease-out ${
-                open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
-              style={{ transitionDelay: open ? "0.35s" : "0s" }}
-            >
+          {/* 下部：SNSアイコン（Instagram / note） */}
+          <div
+            className={[
+              "border-t border-neutral-200 px-4 py-3",
+              "flex items-center justify-between",
+              "transition-all duration-400 ease-out",
+              open
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-1",
+            ].join(" ")}
+            style={{ transitionDelay: open ? "0.42s" : "0s" }}
+          >
+            <span className="text-xs text-neutral-500">Official Accounts</span>
+            <div className="flex items-center gap-3">
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="block px-2 py-3 rounded-md hover:bg-neutral-50"
+                aria-label="Open Instagram"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
               >
-                Instagram
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                    ry="5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                  />
+                  <circle cx="17" cy="7" r="1" fill="currentColor" />
+                </svg>
               </a>
-            </li>
-          </ul>
-        </nav>
+
+              {/* note（シンプルなメモ風アイコン） */}
+              <a
+                href="https://note.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                aria-label="Open note"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="5"
+                    y="4"
+                    width="14"
+                    height="16"
+                    rx="2"
+                    ry="2"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                  />
+                  <polyline
+                    points="13,4 13,9 18,9"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </aside>
       </div>
     </>
   );
