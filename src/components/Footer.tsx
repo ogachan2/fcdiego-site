@@ -21,7 +21,7 @@ export default function Footer() {
             className="object-contain"
           />
           <span className="font-semibold tracking-wide text-lg">
-            F.C. DIEGO
+            F.C.DIEGO
           </span>
         </div>
 
@@ -99,7 +99,7 @@ export default function Footer() {
 
         {/* --- コピーライト --- */}
         <p className="text-xs text-neutral-500 tracking-wide mt-2">
-          © 2024–{year} F.C. DIEGO All rights reserved.
+          © 2024–{year} F.C.DIEGO All rights reserved.
         </p>
       </div>
     </footer>

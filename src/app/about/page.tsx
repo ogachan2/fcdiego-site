@@ -18,7 +18,7 @@ export default function AboutPage() {
             className="rounded-none"
             />
          </div>
-          <h1 className="text-4xl font-extrabold mb-4">F.C. DIEGO</h1>
+          <h1 className="text-4xl font-extrabold mb-4">F.C.DIEGO</h1>
           <p className="text-neutral-700 leading-relaxed max-w-2xl mx-auto">
             九州大学を中心に活動するサッカーサークル。週末の公式戦・対外試合・日々の活動を通じて、
             「最高の4年間」を追求しています。
@@ -62,13 +62,13 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 gap-6">
             <Reveal>
               <div className="p-6 border rounded-xl hover:shadow-md transition">
-                <h3 className="font-semibold text-lg">F.C. ELAN</h3>
+                <h3 className="font-semibold text-lg">F.C.ELAN</h3>
                 <p className="text-neutral-600">競技志向のトップカテゴリ</p>
               </div>
             </Reveal>
             <Reveal>
               <div className="p-6 border rounded-xl hover:shadow-md transition">
-                <h3 className="font-semibold text-lg">F.C. DIEGO</h3>
+                <h3 className="font-semibold text-lg">F.C.DIEGO</h3>
                 <p className="text-neutral-600">バランス重視のメインカテゴリ</p>
               </div>
             </Reveal>
@@ -80,7 +80,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal>
               <div className="p-6 border rounded-xl hover:shadow-md transition">
-                <h3 className="font-semibold text-lg">F.C. DIEGO MASTERS</h3>
+                <h3 className="font-semibold text-lg">F.C.DIEGO MASTERS</h3>
                 <p className="text-neutral-600">社会人・OB中心のカテゴリ</p>
               </div>
             </Reveal>

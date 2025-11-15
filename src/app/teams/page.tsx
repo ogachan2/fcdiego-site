@@ -4,10 +4,10 @@ import Reveal from "@/components/Reveal";
 
 export default function TeamsIndexPage() {
   const items = [
-    { slug: "elan",     title: "F.C. ELAN",          desc: "競技志向のトップカテゴリ" },
-    { slug: "diego",    title: "F.C. DIEGO",         desc: "バランス重視のメインカテゴリ" },
+    { slug: "elan",     title: "F.C.ELAN",          desc: "競技志向のトップカテゴリ" },
+    { slug: "diego",    title: "F.C.DIEGO",         desc: "バランス重視のメインカテゴリ" },
     { slug: "oneheart", title: "ONE HEART",          desc: "初心者歓迎の育成カテゴリ" },
-    { slug: "masters",  title: "F.C. DIEGO MASTERS", desc: "社会人・OB中心のカテゴリ" },
+    { slug: "masters",  title: "F.C.DIEGO MASTERS", desc: "社会人・OB中心のカテゴリ" },
   ];
 
   return (

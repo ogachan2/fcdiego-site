@@ -11,7 +11,7 @@ export default function TeamElanPage() {
           <div className="flex justify-center mb-4">
             <Image src="/emblem.PNG" alt="F.C. DIEGO emblem" width={120} height={120} />
           </div>
-          <h1 className="text-3xl font-extrabold mb-2">F.C. DIEGO MASTERS</h1>
+          <h1 className="text-3xl font-extrabold mb-2">F.C.DIEGO MASTERS</h1>
           <p className="text-neutral-700 max-w-2xl mx-auto">
             大学院生・社会人を中心としたカテゴリ。現役時代に培ったつながりを軸に、研究や仕事と両立しながら、サッカーを通じて交流を続けています。
           </p>

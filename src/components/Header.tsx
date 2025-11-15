@@ -65,7 +65,7 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span>F.C. DIEGO</span>
+            <span>F.C.DIEGO</span>
           </Link>
 
           {/* ナビ（PC/タブレット） */}
@@ -160,7 +160,7 @@ export default function Header() {
                 className="object-contain rounded-full"
               />
               <span className="text-sm font-semibold tracking-wide">
-                F.C. DIEGO
+                F.C.DIEGO
               </span>
             </div>
             <button

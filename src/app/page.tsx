@@ -21,7 +21,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-6xl mx-auto px-4">
           <Reveal y={16}>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-              F.C. DIEGO
+              F.C.DIEGO
             </h1>
           </Reveal>
           <Reveal y={16} delay={0.1}>
@@ -56,7 +56,7 @@ export default function HomePage() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-4 text-neutral-700 leading-relaxed max-w-3xl">
-            F.C. DIEGO は九州大学のサッカーサークルです。毎週土曜日に、福岡市内のグラウンドで活動しています。
+            F.C.DIEGO は九州大学のサッカーサークルです。毎週土曜日に、福岡市内のグラウンドで活動しています。
             サッカーが好きな学生が集まり、試合や練習、イベントを通して「最高の4年間」を一緒に過ごしています。
           </p>
         </Reveal>
@@ -66,7 +66,7 @@ export default function HomePage() {
               href="/about"
               className="inline-flex items-center rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50"
             >
-              F.C. DIEGOについて詳しく見る
+              F.C.DIEGOについて詳しく見る
             </Link>
           </div>
         </Reveal>
@@ -83,10 +83,10 @@ export default function HomePage() {
         <Reveal delay={0.35}>
           <div className="mt-4 flex flex-wrap gap-2">
             {[
-              "F.C. ELAN",
-              "F.C. DIEGO",
+              "F.C.ELAN",
+              "F.C.DIEGO",
               "ONE HEART",
-              "F.C. DIEGO MASTERS",
+              "F.C.DIEGO MASTERS",
             ].map((name) => (
               <span
                 key={name}

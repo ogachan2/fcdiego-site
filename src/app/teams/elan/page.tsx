@@ -11,7 +11,7 @@ export default function TeamElanPage() {
           <div className="flex justify-center mb-4">
             <Image src="/emblem.PNG" alt="F.C. DIEGO emblem" width={120} height={120} />
           </div>
-          <h1 className="text-3xl font-extrabold mb-2">F.C. ELAN</h1>
+          <h1 className="text-3xl font-extrabold mb-2">F.C.ELAN</h1>
           <p className="text-neutral-700 max-w-2xl mx-auto">
             競技志向のトップカテゴリ。九州大会・全国大会を見据えたトレーニングと試合に臨みます。
           </p>
