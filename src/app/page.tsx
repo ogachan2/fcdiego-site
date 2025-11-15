@@ -56,51 +56,57 @@ export default function HomePage() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-4 text-neutral-700 leading-relaxed max-w-3xl">
-            F.C. DIEGO は九州大学を中心に活動するサッカーサークルです。学年・レベル・役割に関係なく参加できる
-            コミュニティで、週末の公式戦、月間のイベント、日常のトレーニング・交流が魅力です。
+            F.C. DIEGO は九州大学のサッカーサークルです。毎週土曜日に、福岡市内のグラウンドで活動しています。
+            サッカーが好きな学生が集まり、試合や練習、イベントを通して「最高の4年間」を一緒に過ごしています。
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-           <h3 className="mt-10 text-xl sm:text-2xl font-semibold">Teams</h3>
-           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {[
-            { name: "F.C. ELAN", desc: "競技志向のトップカテゴリ" },
-            { name: "F.C. DIEGO", desc: "バランス重視のメインカテゴリ" },
-            { name: "ONE HEART", desc: "初心者歓迎の育成カテゴリ" },
-            { name: "F.C. DIEGO MASTERS", desc: "OB/社会人中心のカテゴリ" },
-           ].map((t) => (
-             <div key={t.name} className="rounded-xl border p-6">
-              <div className="font-semibold">{t.name}</div>
-              <div className="text-sm text-neutral-600 mt-1">{t.desc}</div>
-             </div>
-           ))}
-           </div>
+          <div className="mt-6">
+            <Link
+              href="/about"
+              className="inline-flex items-center rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-50"
+            >
+              F.C. DIEGOについて詳しく見る
+            </Link>
+          </div>
         </Reveal>
 
-      </section>
-
-      {/* ===== Highlights（スクロールでふわっと） ===== */}
-      <section className="bg-neutral-50">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <Reveal>
-            <h2 className="text-2xl sm:text-3xl font-semibold">Highlights</h2>
-          </Reveal>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <Reveal key={i} delay={i * 0.05}>
-                <div className="rounded-xl bg-white border overflow-hidden hover:shadow-md transition-shadow">
-                  <div className="aspect-video bg-neutral-200" />
-                  <div className="p-4">
-                    <div className="font-medium">試合ハイライト {i}</div>
-                    <p className="text-sm text-neutral-600 mt-1">
-                      近日公開。Instagramのリールや試合ダイジェストをまとめます。
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
+        {/* ===== Teams ティーザー ===== */}
+        <Reveal delay={0.25}>
+          <h3 className="mt-12 text-xl sm:text-2xl font-semibold">Teams</h3>
+        </Reveal>
+        <Reveal delay={0.3}>
+          <p className="mt-3 text-neutral-700 text-sm sm:text-base max-w-3xl">
+            目的やレベルに合わせて選べる、4つのカテゴリで活動しています。
+          </p>
+        </Reveal>
+        <Reveal delay={0.35}>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {[
+              "F.C. ELAN",
+              "F.C. DIEGO",
+              "ONE HEART",
+              "F.C. DIEGO MASTERS",
+            ].map((name) => (
+              <span
+                key={name}
+                className="rounded-full border border-neutral-300 px-3 py-1 text-xs sm:text-sm text-neutral-800 bg-white"
+              >
+                {name}
+              </span>
             ))}
           </div>
-        </div>
+        </Reveal>
+        <Reveal delay={0.4}>
+          <div className="mt-4">
+            <Link
+              href="/teams"
+              className="inline-flex items-center rounded-md px-4 py-2 text-sm font-medium text-sky-700 border border-sky-100 bg-sky-50 hover:bg-sky-100"
+            >
+              チーム紹介を見る
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       {/* ===== CTA（参加を促す） ===== */}
