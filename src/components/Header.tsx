@@ -10,10 +10,19 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // PC ナビ用メニュー定義（英語＋日本語）
+  const pcNavItems = [
+    { href: "/", label: "HOME", sub: "ホーム" },
+    { href: "/about", label: "ABOUT", sub: "クラブ紹介" },
+    { href: "/results", label: "RESULTS", sub: "過去の成績" },
+    { href: "/teams", label: "TEAMS", sub: "カテゴリ紹介" },
+    { href: "/join", label: "JOIN", sub: "新歓情報" },
+    { href: "/contact", label: "CONTACT", sub: "お問い合わせ" },
+  ] as const;
+
   // スクロールでヘッダー縮小
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -65,37 +74,98 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span>F.C.DIEGO</span>
+            <span>F.C. DIEGO</span>
           </Link>
 
           {/* ナビ（PC/タブレット） */}
-          <nav className="hidden sm:flex items-center gap-5 text-sm">
-            <Link href="/" className="hover:opacity-70">
-              HOME
-            </Link>
-            <Link href="/about" className="hover:opacity-70">
-              ABOUT
-            </Link>
-            <Link href="/results" className="hover:opacity-70">
-              RESULTS
-            </Link>
-            <Link href="/teams" className="hover:opacity-70">
-              TEAMS
-            </Link>
-            <Link href="/join" className="hover:opacity-70">
-              JOIN
-            </Link>
-            <Link href="/contact" className="hover:opacity-70">
-              CONTACT
-            </Link>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-md border px-3 py-1 transition-all duration-300"
-            >
-              Instagram
-            </a>
+          <nav className="hidden sm:flex items-center gap-6">
+            {/* メインメニュー */}
+            {pcNavItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex flex-col items-center text-xs hover:opacity-80 transition-opacity"
+              >
+                <span className="text-[13px] font-medium tracking-wide">
+                  {item.label}
+                </span>
+                <span className="mt-0.5 text-[10px] text-neutral-500 leading-none">
+                  {item.sub}
+                </span>
+              </Link>
+            ))}
+
+            {/* SNS アイコン（Instagram / note） */}
+            <div className="flex items-center gap-3 ml-4">
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Instagram"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                    ry="5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                  />
+                  <circle cx="17" cy="7" r="1" fill="currentColor" />
+                </svg>
+              </a>
+
+              {/* note */}
+              <a
+                href="https://note.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open note"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="4"
+                    ry="4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                  />
+                  <path
+                    d="M9 7h6v6h-3.5L9 15.5V7z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </div>
           </nav>
 
           {/* ハンバーガー（スマホ） */}
@@ -160,7 +230,7 @@ export default function Header() {
                 className="object-contain rounded-full"
               />
               <span className="text-sm font-semibold tracking-wide">
-                F.C.DIEGO
+                F.C. DIEGO
               </span>
             </div>
             <button
@@ -308,7 +378,7 @@ export default function Header() {
           >
             <span className="text-xs text-neutral-500">Official Accounts</span>
             <div className="flex items-center gap-3">
-              {/* Instagram（ブランドカラー寄せ） */}
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
@@ -331,22 +401,22 @@ export default function Header() {
                     rx="5"
                     ry="5"
                     fill="none"
-                    stroke="#E4405F"
-                    strokeWidth="1.8"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
                   />
                   <circle
                     cx="12"
                     cy="12"
-                    r="4.2"
+                    r="4"
                     fill="none"
-                    stroke="#E4405F"
-                    strokeWidth="1.8"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
                   />
-                  <circle cx="17" cy="7" r="1.2" fill="#E4405F" />
+                  <circle cx="17" cy="7" r="1" fill="currentColor" />
                 </svg>
               </a>
 
-              {/* note（公式カラー寄せ） */}
+              {/* note */}
               <a
                 href="https://note.com/"
                 target="_blank"
@@ -361,7 +431,6 @@ export default function Header() {
                   height="16"
                   aria-hidden="true"
                 >
-                  {/* 背景（noteカラー） */}
                   <rect
                     x="3"
                     y="3"
@@ -369,12 +438,13 @@ export default function Header() {
                     height="18"
                     rx="4"
                     ry="4"
-                    fill="#41c9b4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
                   />
-                  {/* ノートの形 */}
                   <path
                     d="M9 7h6v6h-3.5L9 15.5V7z"
-                    fill="#ffffff"
+                    fill="currentColor"
                   />
                 </svg>
               </a>
