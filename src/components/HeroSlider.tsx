@@ -26,7 +26,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="relative h-[85vh] overflow-hidden">
+    <section className="relative h-[65vh] sm:h-[85vh] overflow-hidden">
       {/* 背景スライド（フェードで切り替え） */}
       {HERO_IMAGES.map((img, i) => (
         <div
