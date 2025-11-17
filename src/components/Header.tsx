@@ -27,7 +27,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ページ遷移したら閉じる
+  // ページ遷移したらモバイルメニューを閉じる
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -78,21 +78,45 @@ export default function Header() {
           </Link>
 
           {/* ナビ（PC/タブレット） */}
-          <nav className="hidden sm:flex items-center gap-6">
+          <nav className="hidden sm:flex items-stretch gap-6 relative">
             {/* メインメニュー */}
             {pcNavItems.map((item) => (
               <Link
-                key={item.href}
-                href={item.href}
-                className="flex flex-col items-center text-xs hover:opacity-80 transition-opacity"
-              >
-                <span className="text-[13px] font-medium tracking-wide">
-                  {item.label}
-                </span>
-                <span className="mt-0.5 text-[10px] text-neutral-500 leading-none">
-                  {item.sub}
-                </span>
-              </Link>
+  key={item.href}
+  href={item.href}
+  className="
+    group
+    flex h-full flex-col items-center justify-center
+    px-1
+    text-xs
+    relative
+  "
+>
+  <span className="text-[13px] font-medium tracking-wide">
+    {item.label}
+  </span>
+  <span className="mt-0.5 text-[10px] text-neutral-500 leading-none">
+    {item.sub}
+  </span>
+
+  {/* ← これがヘッダー底に固定される線 */}
+  <span
+    className="
+      absolute
+      left-0
+      right-0
+      bottom-[-6px]      /* ← ヘッダーの白帯の底の位置 */
+      mx-auto
+      h-[2px]
+      w-0
+      bg-black
+      transition-all duration-300
+      group-hover:w-full
+      rounded-full
+    "
+  />
+</Link>
+
             ))}
 
             {/* SNS アイコン（Instagram / note） */}
