@@ -1,5 +1,11 @@
+import PageHero from "@/components/PageHero";
+
+
 export default function ContactPage() {
   return (
+  <>
+    <PageHero page="contact" />
+
     <div className="max-w-6xl mx-auto px-4 py-16">
       <h1 className="text-3xl font-semibold">Contact</h1>
       <p className="mt-4 text-neutral-700">
@@ -15,5 +21,6 @@ export default function ContactPage() {
         </a>
       </div>
     </div>
+  </>
   );
 }

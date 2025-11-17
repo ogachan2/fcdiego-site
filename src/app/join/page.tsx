@@ -1,7 +1,11 @@
 import Reveal from "@/components/Reveal";
+import PageHero from "@/components/PageHero";
+
 
 export default function JoinPage() {
   return (
+    <>
+    <PageHero page="join" />
     <div className="max-w-6xl mx-auto px-4 py-16 space-y-16">
       {/* Hero */}
       <Reveal>
@@ -22,6 +26,7 @@ export default function JoinPage() {
           </div>
         </header>
       </Reveal>
+    
 
       {/* Player */}
       <Reveal>
@@ -141,5 +146,6 @@ export default function JoinPage() {
         </section>
       </Reveal>
     </div>
+    </>
   );
 }

@@ -1,6 +1,8 @@
 // src/app/teams/page.tsx
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import PageHero from "@/components/PageHero";
+
 
 export default function TeamsIndexPage() {
   const items = [
@@ -11,6 +13,8 @@ export default function TeamsIndexPage() {
   ];
 
   return (
+    <>
+    <PageHero page="teams" />
     <div className="max-w-6xl mx-auto px-4 py-16 space-y-10">
       <Reveal>
         <h1 className="text-3xl font-extrabold">Teams</h1>
@@ -30,5 +34,6 @@ export default function TeamsIndexPage() {
         ))}
       </div>
     </div>
+    </>
   );
 }

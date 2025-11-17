@@ -2,6 +2,8 @@
 "use client";
 
 import Reveal from "@/components/Reveal";
+import PageHero from "@/components/PageHero";
+
 
 type YearBlock = {
   year: number;
@@ -82,6 +84,8 @@ const results: YearBlock[] = [
 // ====== UI ======
 export default function ResultsPage() {
   return (
+    <>
+    <PageHero page="results" />
     <div className="max-w-5xl mx-auto px-4 py-16 space-y-14">
       <Reveal>
         <header className="text-center space-y-3">
@@ -141,5 +145,6 @@ export default function ResultsPage() {
         </aside>
       </Reveal>
     </div>
+   </>
   );
 }
