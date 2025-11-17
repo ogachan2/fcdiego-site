@@ -1,53 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import HeroSlider from "@/components/HeroSlider";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* ===== Hero ===== */}
-      <section className="relative h-[70vh] flex items-center">
-        {/* 画像（public/hero.JPG） */}
-        <Image
-          src="/hero.JPG"
-          alt="F.C. DIEGO"
-          fill
-          priority
-          className="object-cover"
-        />
-        {/* オーバーレイ */}
-        <div className="absolute inset-0 bg-black/50" />
-        {/* テキスト */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
-          <Reveal y={16}>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-              F.C.DIEGO
-            </h1>
-          </Reveal>
-          <Reveal y={16} delay={0.1}>
-            <p className="mt-4 max-w-2xl text-white/90">
-              九州大学のサッカーサークル。週末に公式戦・対外試合を行い、日々の活動をSNSで発信中。
-            </p>
-          </Reveal>
-          <Reveal y={16} delay={0.2}>
-            <div className="mt-6 flex gap-3">
-              <Link
-                href="/join"
-                className="rounded-md bg-white text-black px-4 py-2 text-sm font-medium hover:opacity-90"
-              >
-                新歓情報を見る
-              </Link>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                className="rounded-md border border-white/80 text-white px-4 py-2 text-sm hover:bg-white/10"
-              >
-                Instagram
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <HeroSlider />
 
       {/* ===== About（紹介） ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16">
