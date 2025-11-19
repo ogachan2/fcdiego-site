@@ -9,6 +9,16 @@ export default function HomePage() {
       {/* ===== Hero ===== */}
       <HeroSlider />
 
+      {/* ===== Brand Message Band (Black Ver.) ===== */}
+<section className="border-y border-black bg-black">
+  <div className="max-w-6xl mx-auto px-4 py-3">
+    <p className="text-center text-xs sm:text-sm font-medium text-white tracking-wide">
+      F.C.DIEGO｜Kyushu University Football Circle Since 1993
+    </p>
+  </div>
+</section>
+
+
       {/* ===== About（紹介） ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <Reveal>
