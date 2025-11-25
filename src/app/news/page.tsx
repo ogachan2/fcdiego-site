@@ -7,12 +7,13 @@ type NewsItem = {
 };
 
 // src/app/news/page.tsx
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
 export default async function NewsPage() {
-  const news: NewsItem[] = await prisma.news.findMany({
+  const news = await prisma.news.findMany({
     orderBy: { createdAt: "desc" },
   });
 
@@ -39,35 +40,38 @@ export default async function NewsPage() {
           </p>
         ) : (
           <div className="space-y-6">
-            {news.map((item: NewsItem) => (
-              <article
+            {news.map((item) => (
+              <Link
                 key={item.id}
-                className="rounded-2xl bg-white border border-neutral-200/80 shadow-sm px-5 py-4 sm:px-6 sm:py-5"
+                href={`/news/${item.id}`}
+                className="block rounded-2xl bg-white border border-neutral-200/80 shadow-sm px-5 py-4 sm:px-6 sm:py-5 hover:border-emerald-300 hover:shadow-md transition"
               >
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700">
-                    NEWS
-                  </span>
-                  <time
-                    className="text-xs text-neutral-500"
-                    dateTime={item.createdAt.toISOString()}
-                  >
-                    {item.createdAt.toLocaleDateString("ja-JP", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
-                </div>
+                <article>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700">
+                      NEWS
+                    </span>
+                    <time
+                      className="text-xs text-neutral-500"
+                      dateTime={item.createdAt.toISOString()}
+                    >
+                      {item.createdAt.toLocaleDateString("ja-JP", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </div>
 
-                <h2 className="text-base sm:text-lg font-semibold leading-snug mb-1">
-                  {item.title}
-                </h2>
+                  <h2 className="text-base sm:text-lg font-semibold leading-snug mb-1">
+                    {item.title}
+                  </h2>
 
-                <p className="text-sm text-neutral-700 whitespace-pre-wrap">
-                  {item.content}
-                </p>
-              </article>
+                  <p className="text-sm text-neutral-700 line-clamp-2 whitespace-pre-wrap">
+                    {item.content}
+                  </p>
+                </article>
+              </Link>
             ))}
           </div>
         )}
