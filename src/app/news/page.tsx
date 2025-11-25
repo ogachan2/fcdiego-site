@@ -1,10 +1,18 @@
+// 型を追加（NewsPage の上でOK）
+type NewsItem = {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: Date;
+};
+
 // src/app/news/page.tsx
 import { prisma } from "@/lib/prisma";
 
-export const dynamic = "force-dynamic"; // 常に最新を取りたいのでキャッシュ無効
+export const dynamic = "force-dynamic";
 
 export default async function NewsPage() {
-  const news = await prisma.news.findMany({
+  const news: NewsItem[] = await prisma.news.findMany({
     orderBy: { createdAt: "desc" },
   });
 
@@ -31,7 +39,7 @@ export default async function NewsPage() {
           </p>
         ) : (
           <div className="space-y-6">
-            {news.map((item) => (
+            {news.map((item: NewsItem) => (
               <article
                 key={item.id}
                 className="rounded-2xl bg-white border border-neutral-200/80 shadow-sm px-5 py-4 sm:px-6 sm:py-5"
