@@ -4,19 +4,11 @@ import { defineConfig, env } from "prisma/config";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
-
   migrations: {
     path: "prisma/migrations",
   },
-
-  // ★ ここを追加：従来のエンジンを使う設定
-  client: {
-    engineType: "library",
-  },
-
   datasource: {
+    // Supabase の DATABASE_URL（pooler の方）だけを使う
     url: env("DATABASE_URL"),
-    //@ts-ignore
-    directUrl: env("DIRECT_URL"),
   },
 });
