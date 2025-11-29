@@ -43,9 +43,13 @@ export default function NewsAdminNewPage() {
       // 成功したら一覧ページへ
       router.push("/news");
       router.refresh(); // 一覧の再取得
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      setError(err.message ?? "投稿に失敗しました。");
+      if (err instanceof Error) {
+        setError(err.message || "投稿に失敗しました。");
+      } else {
+        setError("投稿に失敗しました。");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -67,7 +71,10 @@ export default function NewsAdminNewPage() {
           </p>
         </header>
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-2xl border border-neutral-200/70 shadow-sm px-5 py-6 sm:px-6 sm:py-7">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 bg-white rounded-2xl border border-neutral-200/70 shadow-sm px-5 py-6 sm:px-6 sm:py-7"
+        >
           {/* エラー表示 */}
           {error && (
             <div className="rounded-md bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-700">
