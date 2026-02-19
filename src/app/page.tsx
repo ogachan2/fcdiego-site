@@ -22,7 +22,7 @@ export default function HomePage() {
       {/* ===== About（紹介） ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <Reveal>
-          <h2 className="text-2xl sm:text-3xl font-semibold">About us</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold">About us.</h2>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-4 text-neutral-700 leading-relaxed max-w-3xl">
