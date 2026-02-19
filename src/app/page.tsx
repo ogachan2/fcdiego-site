@@ -18,6 +18,43 @@ export default function HomePage() {
   </div>
 </section>
 
+{/* ===== Emotion Gallery ===== */}
+<section className="max-w-6xl mx-auto px-4 py-20">
+  <Reveal>
+    <h2 className="text-2xl sm:text-3xl font-semibold text-center">
+      熱狂をともに。
+    </h2>
+  </Reveal>
+
+  <Reveal delay={0.1}>
+    <p className="mt-4 text-center text-neutral-600 text-sm sm:text-base max-w-2xl mx-auto">
+      勝利の瞬間も、悔しさも、笑顔も。
+      DIEGOの4年間は、すべてが本気だ。
+    </p>
+  </Reveal>
+
+  <Reveal delay={0.2}>
+    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {["/top/top1.JPEG", "/top/top2.JPEG", "/top/top3.JPEG", "/top/top4.JPEG"].map(
+        (src) => (
+          <div
+            key={src}
+            className="relative aspect-[3/2] overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={src}
+              alt="F.C.DIEGO moment"
+              fill
+              className="object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        )
+      )}
+    </div>
+  </Reveal>
+</section>
+
+
 
       {/* ===== About（紹介） ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16">
