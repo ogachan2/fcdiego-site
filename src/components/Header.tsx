@@ -324,11 +324,11 @@ export default function Header() {
                 style={{ transitionDelay: open ? "0.18s" : "0s" }}
               >
                 <Link
-                  href="/results"
+                  href="/teams"
                   onClick={() => setOpen(false)}
                   className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
-                  RESULTS
+                  TEAMS
                 </Link>
               </li>
               {/* 4 */}
@@ -342,11 +342,11 @@ export default function Header() {
                 style={{ transitionDelay: open ? "0.24s" : "0s" }}
               >
                 <Link
-                  href="/teams"
+                  href="/results"
                   onClick={() => setOpen(false)}
                   className="block px-2 py-3 rounded-md hover:bg-neutral-50"
                 >
-                  TEAMS
+                  RESULTS
                 </Link>
               </li>
               {/* 5 */}
