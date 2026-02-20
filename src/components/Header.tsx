@@ -14,8 +14,8 @@ export default function Header() {
   const pcNavItems = [
     { href: "/", label: "HOME", sub: "ホーム" },
     { href: "/about", label: "ABOUT", sub: "クラブ紹介" },
-    { href: "/results", label: "RESULTS", sub: "過去の成績" },
     { href: "/teams", label: "TEAMS", sub: "カテゴリ紹介" },
+    { href: "/results", label: "RESULTS", sub: "過去の成績" },
     { href: "/join", label: "JOIN", sub: "新歓情報" },
     { href: "/contact", label: "CONTACT", sub: "お問い合わせ" },
   ] as const;
