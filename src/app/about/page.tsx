@@ -32,7 +32,7 @@ export default function AboutPage() {
         </Reveal>
 
         {/* Flowing Banner Section */}
-        <Reveal>
+        {/* <Reveal>
           <section className="mt-10">
             <BannerStrip
               images={[
@@ -45,7 +45,7 @@ export default function AboutPage() {
               speedSec={25}
             />
           </section>
-        </Reveal>
+        </Reveal> */}
 
   {/* ===== Emotion Gallery ===== */}
       <section className="max-w-6xl mx-auto px-4 py-20">
@@ -64,8 +64,8 @@ export default function AboutPage() {
         <Reveal delay={0.2}>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              "/top/top1.JPEG",
-              "/top/top2.JPEG",
+              "/about/about5.JPEG",
+              "/about/about6.JPEG",
             ].map((src) => (
               <div
                 key={src}
@@ -83,6 +83,77 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
+      {/* ===== Emotion Gallery : 仲間 ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <Reveal>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-center">
+            仲間とともに。
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-4 text-center text-neutral-600 text-sm sm:text-base max-w-2xl mx-auto">
+            うまくいく日も、うまくいかない日も。支え合える仲間がいるから続けられる。
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              "/about/about7.JPEG",
+              "/about/about8.JPEG",
+            ].map((src) => (
+              <div
+                key={src}
+                className="relative aspect-[3/2] overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={src}
+                  alt="F.C.DIEGO friends"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ===== Emotion Gallery : 青春 ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <Reveal>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-center">
+            青春をここで。
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-4 text-center text-neutral-600 text-sm sm:text-base max-w-2xl mx-auto">
+            日常の延長にある非日常。気づけば、かけがえのない時間になっている。
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              "/about/about9.JPEG",
+              "/about/about10.JPEG",
+            ].map((src) => (
+              <div
+                key={src}
+                className="relative aspect-[3/2] overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={src}
+                  alt="F.C.DIEGO youth"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
 
         {/* Mission / Vision / Value */}
         {/* <Reveal>

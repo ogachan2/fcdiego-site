@@ -254,7 +254,7 @@ export default function Header() {
                 className="object-contain rounded-full"
               />
               <span className="text-sm font-semibold tracking-wide">
-                F.C. DIEGO
+                F.C.DIEGO
               </span>
             </div>
             <button
