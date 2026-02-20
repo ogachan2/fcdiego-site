@@ -47,8 +47,45 @@ export default function AboutPage() {
           </section>
         </Reveal>
 
-        {/* Mission / Vision / Value */}
+  {/* ===== Emotion Gallery ===== */}
+      <section className="max-w-6xl mx-auto px-4 py-20">
         <Reveal>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-center">
+            熱狂をともに。
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-4 text-center text-neutral-600 text-sm sm:text-base max-w-2xl mx-auto">
+            勝利の瞬間も、悔しさも、笑顔も。DIEGOの4年間は、すべてが本気だ。
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              "/top/top1.JPEG",
+              "/top/top2.JPEG",
+            ].map((src) => (
+              <div
+                key={src}
+                className="relative aspect-[3/2] overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={src}
+                  alt="F.C.DIEGO moment"
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+
+        {/* Mission / Vision / Value */}
+        {/* <Reveal>
           <section>
             <h2 className="text-3xl font-bold mb-6">Mission / Vision / Value</h2>
             <div className="space-y-4 text-neutral-700">
@@ -63,40 +100,7 @@ export default function AboutPage() {
               </p>
             </div>
           </section>
-        </Reveal>
-
-        {/* Teams */}
-        <Reveal>
-          <section>
-            <h2 className="text-3xl font-bold mb-6">Teams</h2>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <Reveal>
-                <div className="p-6 border rounded-xl hover:shadow-md transition">
-                  <h3 className="font-semibold text-lg">F.C.ELAN</h3>
-                  <p className="text-neutral-600">競技志向のトップカテゴリ</p>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="p-6 border rounded-xl hover:shadow-md transition">
-                  <h3 className="font-semibold text-lg">F.C.DIEGO</h3>
-                  <p className="text-neutral-600">バランス重視のメインカテゴリ</p>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="p-6 border rounded-xl hover:shadow-md transition">
-                  <h3 className="font-semibold text-lg">ONE HEART</h3>
-                  <p className="text-neutral-600">初心者歓迎の育成カテゴリ</p>
-                </div>
-              </Reveal>
-              <Reveal>
-                <div className="p-6 border rounded-xl hover:shadow-md transition">
-                  <h3 className="font-semibold text-lg">F.C.DIEGO MASTERS</h3>
-                  <p className="text-neutral-600">社会人・OB中心のカテゴリ</p>
-                </div>
-              </Reveal>
-            </div>
-          </section>
-        </Reveal>
+        </Reveal> */}
 
         {/* Activity */}
         <Reveal>
@@ -108,21 +112,6 @@ export default function AboutPage() {
               <li>・メンバー：約150名（九大生・他大学生・マネージャー）</li>
               <li>・特徴：競技と自由の両立／学生主体の運営体制</li>
             </ul>
-          </section>
-        </Reveal>
-
-        {/* Highlights */}
-        <Reveal>
-          <section>
-            <h2 className="text-3xl font-bold mb-6">Highlights</h2>
-            <p className="text-neutral-700">
-              同好会選手権 九州大会準優勝（2024）／全国大会ベスト16・総合11位などの実績。過去には2年連続で全国大会準優勝。
-              詳細は{" "}
-              <a href="/results" className="text-blue-600 hover:underline">
-                Resultsページ
-              </a>{" "}
-              へ。
-            </p>
           </section>
         </Reveal>
 

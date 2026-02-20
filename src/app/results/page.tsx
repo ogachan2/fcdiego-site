@@ -91,7 +91,7 @@ export default function ResultsPage() {
         <header className="text-center space-y-3">
           <h1 className="text-4xl font-extrabold tracking-tight">Results</h1>
           <p className="text-neutral-600">
-            年度ごとの主な戦績を掲載しています。太字・補足などは自由に加筆してください。
+            年度ごとの主な戦績を掲載しています。
           </p>
         </header>
       </Reveal>
@@ -134,7 +134,7 @@ export default function ResultsPage() {
       </section>
 
       {/* 編集メモ */}
-      <Reveal>
+      {/* <Reveal>
         <aside className="mt-8 rounded-xl border bg-neutral-50 p-4 text-sm text-neutral-600">
           <p className="mb-1 font-semibold">編集メモ</p>
           <ul className="list-disc pl-5 space-y-1">
@@ -143,7 +143,7 @@ export default function ResultsPage() {
             <li>必要なら年度を追加（例：<code>{`{ year: 2025, items: [] }`}</code>）。</li>
           </ul>
         </aside>
-      </Reveal>
+      </Reveal> */}
     </div>
    </>
   );
