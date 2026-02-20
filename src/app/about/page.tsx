@@ -2,12 +2,16 @@ import Reveal from "@/components/Reveal";
 import BannerStrip from "@/components/BannerStrip";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import AboutIntroHero from "@/components/AboutIntroHero";
 
 export default function AboutPage() {
   return (
     <>
       {/* 上部フル幅ヒーロー（共通コンポーネント） */}
       <PageHero page="about" />
+
+      {/* ★ここを追加：Brew SAGA風のAboutヒーロー */}
+      <AboutIntroHero />
 
       {/* 以下は従来どおりの中身 */}
       <div className="max-w-6xl mx-auto px-4 py-16 space-y-16">
