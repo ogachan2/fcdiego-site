@@ -11,7 +11,7 @@ export default function AboutPage() {
       <PageHero page="about" />
 
       {/* ★ここを追加：Brew SAGA風のAboutヒーロー */}
-      <AboutIntroHero />
+      {/* <AboutIntroHero /> */}
 
       {/* 以下は従来どおりの中身 */}
       <div className="max-w-6xl mx-auto px-4 py-16 space-y-16">
