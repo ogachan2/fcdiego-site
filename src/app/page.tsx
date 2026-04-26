@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import Reveal from "@/components/Reveal";
 import HeroSlider from "@/components/HeroSlider";
+import Reveal from "@/components/Reveal";
+import { InstagramIcon, NoteIcon } from "@/components/SocialIcons";
 
 const pageLinks = [
   {
@@ -10,7 +11,7 @@ const pageLinks = [
     label: "Club",
     image: "/top/top1.JPEG",
     alt: "F.C.DIEGO about",
-    desc: "F.C.DIEGO は九州大学のサッカーサークルです。毎週土曜日に、福岡市内のグラウンドで活動しています。 サッカーが好きな学生が集まり、試合や練習、イベントを通して「最高の4年間」を一緒に過ごしています。",
+    desc: "F.C.DIEGOは九州大学を中心に活動するサッカーサークルです。練習や試合、イベントを通して、仲間と大学生活を楽しんでいます。",
     cta: "F.C.DIEGOについて知る",
   },
   {
@@ -28,18 +29,33 @@ const pageLinks = [
     label: "Results",
     image: "/hero-results.jpg",
     alt: "F.C.DIEGO results",
-    desc: "同好会選手権 九州大会準優勝（2024）／全国大会ベスト16・総合11位などの実績。過去には2年連続で全国大会準優勝。",
+    desc: "同好会選手権 九州大会準優勝、全国大会出場など、これまでの実績を紹介しています。",
     cta: "Resultsページへ",
+  },
+] as const;
+
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/diego_pics_/",
+    title: "Instagram",
+    label: "Latest",
+    desc: "最新情報や試合結果を掲載しています。",
+    cta: "Instagramを見る",
+  },
+  {
+    href: "https://note.com/fcdiego_1993",
+    title: "note",
+    label: "Story",
+    desc: "部員の思いを綴ったブログを掲載しています。",
+    cta: "noteを読む",
   },
 ] as const;
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* ===== Hero ===== */}
       <HeroSlider />
 
-      {/* ===== Brand Message Band (Black Ver.) ===== */}
       <section className="border-y border-black bg-black">
         <div className="mx-auto max-w-6xl px-4 py-3">
           <p className="text-center text-xs font-medium tracking-wide text-white sm:text-sm">
@@ -48,7 +64,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== Page Links ===== */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <Reveal>
           <div className="mb-10 text-center sm:mb-12">
@@ -107,30 +122,91 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== CTA ===== */}
-      <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 py-20 text-center">
-          <Reveal>
-            <h2 className="text-2xl font-semibold sm:text-3xl">
-              一緒に、次のシーズンをつくろう。
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-4 text-neutral-700">
-              初心者から経験者まで歓迎。まずは新歓ページをご覧ください。
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="mt-6">
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
+        <Reveal>
+          <div className="grid gap-5 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm md:grid-cols-[260px_1fr] md:items-center md:p-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                Official Accounts
+              </p>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-neutral-950 sm:text-3xl">
+                SNS・ブログ
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-neutral-600">
+                最新情報はInstagram、部員ブログはnoteからご覧ください。
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative overflow-hidden rounded-xl border border-neutral-200 bg-neutral-50 p-5 transition duration-300 hover:-translate-y-1 hover:border-neutral-950 hover:bg-white hover:shadow-md"
+                >
+                  <div className="pointer-events-none absolute -right-5 -top-5 text-neutral-950/[0.04] transition duration-300 group-hover:text-neutral-950/[0.07]">
+                    {item.title === "Instagram" ? (
+                      <InstagramIcon size={128} />
+                    ) : (
+                      <NoteIcon size={180} />
+                    )}
+                  </div>
+
+                  <div className="relative z-10 mb-4 flex items-center justify-between gap-4">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                      {item.label}
+                    </span>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200 bg-white text-sm text-neutral-600 transition group-hover:border-neutral-950 group-hover:bg-neutral-950 group-hover:text-white">
+                      →
+                    </span>
+                  </div>
+                  <h3 className="relative z-10 text-xl font-bold tracking-tight text-neutral-950">
+                    {item.title}
+                  </h3>
+                  <p className="relative z-10 mt-3 text-sm leading-6 text-neutral-600">
+                    {item.desc}
+                  </p>
+                  <p className="relative z-10 mt-5 text-sm font-semibold text-neutral-950">
+                    {item.cta}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
+        <Reveal>
+          <div className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8 md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-8">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-200" />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                Join us
+              </p>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-neutral-950 sm:text-3xl">
+                新メンバー募集
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-600 sm:text-base">
+                プレイヤーもマネージャーも募集しています。初心者・経験者を問わず、F.C.DIEGOの雰囲気を知りたい方は募集情報をご覧ください。
+              </p>
+            </div>
+
+            <div className="mt-6 md:mt-0">
               <Link
                 href="/join"
-                className="inline-flex items-center rounded-md bg-black px-6 py-3 text-sm font-medium text-white hover:opacity-90"
+                className="inline-flex items-center justify-center gap-3 rounded-lg bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-950"
               >
-                JOIN US
+                募集情報を見る
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition group-hover:translate-x-1">
+                  →
+                </span>
               </Link>
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </section>
     </div>
   );

@@ -1,22 +1,14 @@
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import { InstagramIcon, NoteIcon } from "@/components/SocialIcons";
 
 const activityItems = [
   { label: "練習日", value: "毎週土曜日 / 9:00-13:00" },
   { label: "試合日", value: "日曜日 / 不定期開催" },
-  {
-    label: "主な会場",
-    value: "今津運動公園 / 西南の杜湖畔公園 / 九州大学多目的グラウンド ほか",
-  },
-  {
-    label: "所属人数",
-    value: "約150人",
-  },
-  {
-    label: "所属大学",
-    value: "九州大学を中心に、福岡大学 / 西南大学 / その他大学",
-  },
+  { label: "主な会場", value: "今津運動公園 / 西南の杜湖畔公園 / 九州大学多目的グラウンド ほか" },
+  { label: "所属人数", value: "約150人" },
+  { label: "所属大学", value: "九州大学を中心に、福岡大学 / 西南大学 / その他大学" },
   { label: "活動内容", value: "練習 / 対外試合 / 公式戦 / イベント" },
   { label: "モットー", value: "楽しく、強く" },
 ] as const;
@@ -34,6 +26,21 @@ const messageBlocks = [
   },
 ] as const;
 
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/diego_pics_/",
+    title: "Instagram",
+    desc: "最新情報や試合結果を掲載しています。",
+    icon: InstagramIcon,
+  },
+  {
+    href: "https://note.com/fcdiego_1993",
+    title: "note",
+    desc: "部員の思いを綴ったブログを掲載しています。",
+    icon: NoteIcon,
+  },
+] as const;
+
 export default function AboutPage() {
   return (
     <>
@@ -41,7 +48,7 @@ export default function AboutPage() {
 
       <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <Reveal>
-          <section className="grid items-center gap-8 border-b border-neutral-200 pb-12 md:grid-cols-[1fr_280px] md:gap-12 sm:pb-14">
+          <section className="grid items-center gap-8 border-b border-neutral-200 pb-12 sm:pb-14 md:grid-cols-[1fr_280px] md:gap-12">
             <div>
               <div className="mb-4 flex items-center gap-3">
                 <span className="h-px w-10 bg-neutral-950" />
@@ -56,25 +63,21 @@ export default function AboutPage() {
 
               <div className="mt-5 space-y-4 text-sm leading-7 text-neutral-700 sm:text-base sm:leading-8">
                 <p>
-                  F.C.DIEGOは、九州大学を中心に活動するサッカーサークルです。
-                  週末の練習や対外試合、公式戦を通して、サッカーに本気で向き合いながら、大学生活でしか味わえない時間を仲間とつくっています。
+                  F.C.DIEGOは、九州大学を中心に活動するサッカーサークルです。週末の練習や対外試合、公式戦を通して、サッカーに本気で向き合いながら、大学生活でしか味わえない時間を仲間とつくっています。
                 </p>
                 <p>
-                  メンバーには、Jユース出身やナショナルトレセン経験者から、大学で初めてサッカーを始める人まで、幅広いレベルのプレイヤーが在籍しています。
-                  マネージャーも同様に、高校から続けている人、新しく挑戦する人など、さまざまな背景を持つメンバーが活躍しています。
+                  メンバーには、Jユース出身やナショナルトレセン経験者から、大学で初めてサッカーを始める人まで、幅広いレベルのプレイヤーが在籍しています。マネージャーも同様に、さまざまな背景を持つメンバーが活躍しています。
                 </p>
                 <p>
-                  本気で勝ちにいきたい人、気軽にサッカーを楽しみたい人、仲間と青春を満喫したい人。
-                  それぞれのスタイルを尊重しながら、同じピッチでひとつのチームとして過ごせることが、DIEGOの大きな魅力です。
+                  本気で勝ちにいきたい人、気軽にサッカーを楽しみたい人、仲間と青春を満喫したい人。それぞれのスタイルを尊重しながら、同じピッチでひとつのチームとして過ごせることがDIEGOの魅力です。
                 </p>
                 <p className="font-semibold text-neutral-950">
-                  すべてのメンバーに共通しているのは、サッカーが好きという想い。
-                  異なるバックグラウンドを持つ仲間が集まり、一緒にプレーすることで生まれる一体感こそが、F.C.DIEGOらしさです。
+                  すべてのメンバーに共通しているのは、サッカーが好きという想い。異なるバックグラウンドを持つ仲間が集まり、一緒にプレーすることで生まれる一体感こそが、F.C.DIEGOらしさです。
                 </p>
               </div>
             </div>
 
-            <div className="mx-auto w-full max-w-56 md:max-w-none">
+            <div className="mx-auto w-full max-w-56 self-center md:max-w-none">
               <Image
                 src="/emblem.PNG"
                 alt="F.C. DIEGO emblem"
@@ -187,18 +190,47 @@ export default function AboutPage() {
         </section>
 
         <Reveal>
-          <section className="rounded-2xl bg-neutral-950 px-6 py-9 text-center text-white sm:px-10">
-            <p className="text-sm leading-7 text-white/75 sm:text-base">
-              最新情報はInstagramからご覧ください。
-            </p>
-            <a
-              href="https://www.instagram.com/diego_pics_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Instagramを見る
-            </a>
+          <section className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="grid gap-5 md:grid-cols-[260px_1fr] md:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                  Official Accounts
+                </p>
+                <h2 className="mt-3 text-2xl font-bold tracking-tight text-neutral-950">
+                  SNS・ブログ
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-neutral-600">
+                  最新情報や部員ブログもあわせてご覧ください。
+                </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {socialLinks.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-center gap-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition duration-300 hover:-translate-y-1 hover:border-neutral-950 hover:bg-white hover:shadow-md"
+                    >
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-950">
+                        <Icon size={item.title === "Instagram" ? 20 : 34} />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-bold text-neutral-950">
+                          {item.title}
+                        </span>
+                        <span className="mt-1 block text-sm leading-6 text-neutral-600">
+                          {item.desc}
+                        </span>
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </section>
         </Reveal>
       </main>

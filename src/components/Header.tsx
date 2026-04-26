@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { InstagramIcon, NoteIcon } from "@/components/SocialIcons";
 
 const navItems = [
   { href: "/", label: "HOME", sub: "ホーム" },
@@ -125,54 +126,17 @@ export default function Header() {
                 aria-label="Open Instagram"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-800 transition duration-300 hover:-translate-y-0.5 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
               >
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <rect
-                    x="3"
-                    y="3"
-                    width="18"
-                    height="18"
-                    rx="5"
-                    ry="5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <circle cx="17" cy="7" r="1" fill="currentColor" />
-                </svg>
+                <InstagramIcon size={16} />
               </a>
 
               <a
-                href="https://note.com/"
+                href="https://note.com/fcdiego_1993"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open note"
                 className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-800 transition duration-300 hover:-translate-y-0.5 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
               >
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <rect
-                    x="3"
-                    y="3"
-                    width="18"
-                    height="18"
-                    rx="4"
-                    ry="4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <path
-                    d="M9 7h6v6h-3.5L9 15.5V7z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <NoteIcon size={28} />
               </a>
             </div>
           </nav>
@@ -335,55 +299,18 @@ export default function Header() {
                 aria-label="Open Instagram"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-white transition hover:-translate-y-0.5 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
               >
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <rect
-                    x="3"
-                    y="3"
-                    width="18"
-                    height="18"
-                    rx="5"
-                    ry="5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <circle cx="17" cy="7" r="1" fill="currentColor" />
-                </svg>
+                <InstagramIcon size={16} />
               </a>
 
               <a
-                href="https://note.com/"
+                href="https://note.com/fcdiego_1993"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 aria-label="Open note"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-white transition hover:-translate-y-0.5 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
               >
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <rect
-                    x="3"
-                    y="3"
-                    width="18"
-                    height="18"
-                    rx="4"
-                    ry="4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                  />
-                  <path
-                    d="M9 7h6v6h-3.5L9 15.5V7z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <NoteIcon size={30} />
               </a>
             </div>
           </div>
