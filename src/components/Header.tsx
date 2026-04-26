@@ -274,12 +274,12 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className={[
-                      "group relative block overflow-hidden rounded-2xl border border-neutral-200 bg-white px-4 py-3.5 shadow-sm transition duration-300",
+                      "group relative block overflow-hidden rounded-2xl border px-4 py-3.5 shadow-sm transition duration-300",
                       "hover:-translate-y-0.5 hover:border-neutral-950 hover:shadow-md",
                       pathname === item.href ||
                       (item.href !== "/" && pathname.startsWith(item.href))
                         ? "border-neutral-950 bg-neutral-950 text-white"
-                        : "text-neutral-950",
+                        : "border-neutral-200 bg-white text-neutral-950",
                     ].join(" ")}
                   >
                     <span className="relative z-10 flex items-center justify-between gap-4">
