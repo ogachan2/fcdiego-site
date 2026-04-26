@@ -183,17 +183,11 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen(true)}
-            className="inline-flex items-center justify-center rounded-md p-2 transition hover:bg-neutral-100 sm:hidden"
+            className="group inline-flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-neutral-200 bg-white/80 shadow-sm transition hover:border-neutral-950 hover:bg-neutral-950 sm:hidden"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
+            <span className="h-0.5 w-5 rounded-full bg-neutral-950 transition group-hover:bg-white" />
+            <span className="h-0.5 w-4 rounded-full bg-neutral-950 transition group-hover:w-5 group-hover:bg-white" />
+            <span className="h-0.5 w-5 rounded-full bg-neutral-950 transition group-hover:bg-white" />
           </button>
         </div>
       </header>
@@ -212,18 +206,20 @@ export default function Header() {
         <button
           aria-label="Close menu backdrop"
           onClick={() => setOpen(false)}
-          className="absolute inset-0 bg-black/30"
+          className="absolute inset-0 bg-black/45 backdrop-blur-[2px]"
         />
 
         <aside
           className={[
-            "absolute right-0 top-0 flex h-full w-72 max-w-[80%] flex-col",
-            "bg-white/90 shadow-2xl backdrop-blur-md",
+            "absolute right-0 top-0 flex h-full w-80 max-w-[86%] flex-col overflow-hidden",
+            "border-l border-white/40 bg-white/92 shadow-2xl backdrop-blur-xl",
             "transform transition-transform duration-300 ease-out",
             open ? "translate-x-0" : "translate-x-full",
           ].join(" ")}
         >
-          <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
+          <div className="relative border-b border-neutral-200 px-5 py-5">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-200" />
+            <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Image
                 src="/emblem.PNG"
@@ -232,14 +228,19 @@ export default function Header() {
                 height={28}
                 className="rounded-full object-contain"
               />
-              <span className="text-sm font-semibold tracking-wide">
-                F.C.DIEGO
-              </span>
+              <div>
+                <span className="block text-sm font-bold tracking-wide">
+                  F.C.DIEGO
+                </span>
+                <span className="mt-0.5 block text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                  Menu
+                </span>
+              </div>
             </div>
             <button
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="rounded-md p-2 transition hover:bg-neutral-100"
+              className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-white transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -251,10 +252,11 @@ export default function Header() {
                 />
               </svg>
             </button>
+            </div>
           </div>
 
-          <nav className="flex-1 overflow-y-auto px-4 py-4">
-            <ul className="space-y-1 text-base">
+          <nav className="flex-1 overflow-y-auto px-4 py-5">
+            <ul className="space-y-2 text-base">
               {navItems.map((item, index) => (
                 <li
                   key={item.href}
@@ -271,9 +273,44 @@ export default function Header() {
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-md px-2 py-3 transition hover:bg-neutral-50"
+                    className={[
+                      "group relative block overflow-hidden rounded-2xl border border-neutral-200 bg-white px-4 py-3.5 shadow-sm transition duration-300",
+                      "hover:-translate-y-0.5 hover:border-neutral-950 hover:shadow-md",
+                      pathname === item.href ||
+                      (item.href !== "/" && pathname.startsWith(item.href))
+                        ? "border-neutral-950 bg-neutral-950 text-white"
+                        : "text-neutral-950",
+                    ].join(" ")}
                   >
-                    {item.label}
+                    <span className="relative z-10 flex items-center justify-between gap-4">
+                      <span>
+                        <span className="block text-sm font-bold tracking-wide">
+                          {item.label}
+                        </span>
+                        <span
+                          className={[
+                            "mt-1 block text-[11px] leading-none",
+                            pathname === item.href ||
+                            (item.href !== "/" && pathname.startsWith(item.href))
+                              ? "text-white/65"
+                              : "text-neutral-500",
+                          ].join(" ")}
+                        >
+                          {item.sub}
+                        </span>
+                      </span>
+                      <span
+                        className={[
+                          "flex h-7 w-7 items-center justify-center rounded-full border text-xs transition duration-300 group-hover:translate-x-0.5",
+                          pathname === item.href ||
+                          (item.href !== "/" && pathname.startsWith(item.href))
+                            ? "border-white/25 bg-white/10 text-white"
+                            : "border-neutral-200 bg-neutral-50 text-neutral-500 group-hover:border-neutral-950 group-hover:bg-neutral-950 group-hover:text-white",
+                        ].join(" ")}
+                      >
+                        →
+                      </span>
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -282,7 +319,7 @@ export default function Header() {
 
           <div
             className={[
-              "flex items-center justify-between border-t border-neutral-200 px-4 py-3",
+              "flex items-center justify-between border-t border-neutral-200 bg-neutral-50/80 px-5 py-4",
               "transition-all duration-400 ease-out",
               open ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0",
             ].join(" ")}
@@ -296,7 +333,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 aria-label="Open Instagram"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 transition hover:bg-neutral-100"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-white transition hover:-translate-y-0.5 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <rect
@@ -328,7 +365,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 aria-label="Open note"
-                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 transition hover:bg-neutral-100"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-300 bg-white transition hover:-translate-y-0.5 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white"
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                   <rect
