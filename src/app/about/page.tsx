@@ -41,6 +41,26 @@ const socialLinks = [
   },
 ] as const;
 
+const updatedActivityItems = [
+  { label: "練習日", value: "毎週土曜日 / 9:00-13:00" },
+  { label: "試合日", value: "日曜日 / 不定期開催" },
+  {
+    label: "練習場所",
+    value: "今津運動公園 / 西南の杜湖畔公園 / 九州大学 多目的グラウンド",
+  },
+  {
+    label: "試合会場",
+    value: "福岡フットボールセンター / 雁ノ巣レクリエーションセンター など",
+  },
+  { label: "所属リーグ", value: "福岡地区社会人リーグ" },
+  { label: "所属人数", value: "約50人" },
+  {
+    label: "所属大学",
+    value: "九州大学を中心に、福岡大学 / 西南学院大学 / その他大学",
+  },
+  { label: "活動内容", value: "練習 / 対外試合 / 公式戦 / イベント" },
+] as const;
+
 export default function AboutPage() {
   return (
     <>
@@ -60,6 +80,10 @@ export default function AboutPage() {
               <h1 className="text-3xl font-extrabold tracking-tight text-neutral-950 sm:text-4xl">
                 F.C.DIEGO
               </h1>
+
+              <p className="mt-5 text-sm leading-7 text-neutral-700 sm:text-base sm:leading-8">
+                モットーは「楽しく・強く」。勝利を目指して本気でプレーしながら、仲間とサッカーを楽しむ時間を大切にしています。
+              </p>
 
               <div className="mt-5 space-y-4 text-sm leading-7 text-neutral-700 sm:text-base sm:leading-8">
                 <p>
@@ -106,7 +130,7 @@ export default function AboutPage() {
               </div>
 
               <dl className="divide-y divide-neutral-200 rounded-xl border border-neutral-200 bg-white">
-                {activityItems.map((item) => (
+                {updatedActivityItems.map((item) => (
                   <div
                     key={item.label}
                     className="grid gap-2 px-4 py-4 sm:grid-cols-[120px_1fr] sm:gap-6 sm:px-5"
