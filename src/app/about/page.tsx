@@ -52,13 +52,13 @@ const updatedActivityItems = [
     label: "試合会場",
     value: "福岡フットボールセンター / 雁ノ巣レクリエーションセンター など",
   },
-  { label: "所属リーグ", value: "福岡地区社会人リーグ" },
-  { label: "所属人数", value: "約50人" },
+  { label: "所属リーグ", value: "福岡地区社会人サッカーリーグ" },
+  { label: "所属人数", value: "約150人" },
   {
     label: "所属大学",
     value: "九州大学を中心に、福岡大学 / 西南学院大学 / その他大学",
   },
-  { label: "活動内容", value: "練習 / 対外試合 / 公式戦 / イベント" },
+  { label: "活動内容", value: "練習 / 公式戦 / イベント" },
 ] as const;
 
 export default function AboutPage() {
@@ -124,9 +124,6 @@ export default function AboutPage() {
                 <h2 className="mt-3 text-2xl font-bold tracking-tight text-neutral-950 sm:text-3xl">
                   活動について
                 </h2>
-                <p className="mt-4 text-sm leading-7 text-neutral-600">
-                  日々の活動内容を、初めて見る人にも分かりやすい形でまとめています。
-                </p>
               </div>
 
               <dl className="divide-y divide-neutral-200 rounded-xl border border-neutral-200 bg-white">

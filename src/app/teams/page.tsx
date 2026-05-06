@@ -6,22 +6,26 @@ import PageHero from "@/components/PageHero";
 const teams = [
   {
     title: "F.C.ELAN",
-    desc: "年度末に行われる選手内投票によって選ばれた、F.C.DIEGOのトップチーム。福岡地区社会人サッカーリーグ１部所属。アットホームチャンピオンシップでは毎年全国大会出場し、同好会日本一を目指しています。",
+    desc: "年度末に行われる選手内投票によって選ばれたメンバーで構成される選抜チーム。アットホームチャンピオンシップでは毎年全国大会出場し、同好会日本一を目指しています。",
+    league: "福岡地区社会人サッカーリーグ1部",
     image: "/teams/elan/hero.jpg",
   },
   {
     title: "F.C.DIEGO",
-    desc: "F.C.DIEGOの主力チーム。九州大学の学生たちが中心となって構成され、地域社会人サッカーリーグに参加しています。",
+    desc: "1年生から所属できるチーム。熱量高く日々の活動に取り組んでいます。ELAN候補メンバーも多く所属しています。",
+    league: "福岡地区社会人サッカーリーグ3部",
     image: "/teams/diego/hero.jpg",
   },
   {
     title: "ONE HEART",
-    desc: "F.C.DIEGOのサポートチーム。九州大学の学生たちが中心となって構成され、地域社会人サッカーリーグに参加しています。",
+    desc: "1年生から所属できるチーム。サッカーを楽しみたい人が多く、和気あいあいと活動しています。初心者も大歓迎です。",
+    league: "福岡地区社会人サッカーリーグ4部",
     image: "/teams/oneheart/hero.jpg",
   },
   {
     title: "F.C.DIEGO MASTERS",
-    desc: "F.C.DIEGOの高水準チーム。九州大学の学生たちが中心となって構成され、地域社会人サッカーリーグに参加しています。",
+    desc: "大学院生と社会人によって構成されるチーム。研究や仕事と両立しながら楽しく活動しています。",
+    league: "福岡地区社会人サッカーリーグ1部",
     image: "/teams/masters/hero.jpg",
   },
 ];
@@ -57,6 +61,9 @@ export default function TeamsIndexPage() {
                     {team.title}
                   </h2>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-700 sm:text-base sm:leading-8">
+                    {team.league}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-neutral-700">
                     {team.desc}
                   </p>
                 </div>
