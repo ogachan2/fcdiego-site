@@ -17,7 +17,7 @@ const teams = [
   {
     title: "ONE HEART",
     desc: "F.C.DIEGOのサポートチーム。九州大学の学生たちが中心となって構成され、地域社会人サッカーリーグに参加しています。",
-    image: "/hero-teams.jpg",
+    image: "/teams/oneheart/hero.jpg",
   },
   {
     title: "F.C.DIEGO MASTERS",

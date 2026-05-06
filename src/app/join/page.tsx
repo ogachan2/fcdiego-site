@@ -7,7 +7,7 @@ const joinTypes = [
   {
     title: "Player",
     heading: "プレイヤー募集",
-    image: "/hero-join.jpg",
+    image: "/join/player1.JPEG",
     intro:
       "大学生・大学院生なら誰でも歓迎です。初心者も経験者も、サッカーを楽しみたい気持ちがあれば大丈夫。まずは一度、練習に参加して雰囲気を感じてみてください。",
     items: ["飲み物", "スパイク", "サッカーができる服装"],
@@ -16,7 +16,7 @@ const joinTypes = [
   {
     title: "Manager",
     heading: "マネージャー募集",
-    image: "/about/about8.JPEG",
+    image: "/join/manager1.JPEG",
     intro:
       "F.C.DIEGOでは、マネージャーも大募集中です。チームを支える活動に興味がある人、写真やSNS、イベント運営に関わってみたい人も歓迎します。",
     items: ["試合・練習のサポート", "写真や動画の撮影", "SNS更新やチーム運営の補助"],
@@ -63,15 +63,32 @@ export default function JoinPage() {
           {joinTypes.map((type, index) => (
             <Reveal key={type.title} delay={index * 0.1}>
               <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
-                  <Image
-                    src={type.image}
-                    alt={type.heading}
-                    fill
-                    sizes="(min-width: 1024px) 544px, 100vw"
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="relative grid grid-cols-2 gap-1 overflow-hidden bg-neutral-100">
+                  {(type.title === "Player"
+                    ? ["/join/player1.JPEG", "/join/player2.JPEG", "/join/player3.JPEG"]
+                    : ["/join/manager1.JPEG", "/join/manager2.JPEG", "/join/manager3.JPEG"]
+                  ).map((src, imageIndex) => (
+                    <div
+                      key={src}
+                      className={[
+                        "relative overflow-hidden",
+                        imageIndex === 0 ? "col-span-2 aspect-[16/9]" : "aspect-[4/3]",
+                      ].join(" ")}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${type.heading} ${imageIndex + 1}`}
+                        fill
+                        sizes={
+                          imageIndex === 0
+                            ? "(min-width: 1024px) 544px, 100vw"
+                            : "(min-width: 1024px) 272px, 50vw"
+                        }
+                        className="object-cover transition duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
                   <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-white/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white backdrop-blur">
                     {type.title}
                   </div>

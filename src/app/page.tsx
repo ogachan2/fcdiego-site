@@ -27,7 +27,7 @@ const pageLinks = [
     href: "/results",
     title: "Highlights",
     label: "Results",
-    image: "/hero-results.jpg",
+    image: "/top/top3.JPEG",
     alt: "F.C.DIEGO results",
     desc: "同好会選手権 九州大会準優勝、全国大会出場など、これまでの実績を紹介しています。",
     cta: "Resultsページへ",
