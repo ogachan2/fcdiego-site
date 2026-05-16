@@ -1,5 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import PageHero from "@/components/PageHero";
+import { getNewsCategoryLabel } from "@/lib/news-categories";
 import { formatNewsDate, getPublishedNewsById } from "@/lib/news";
 
 export const dynamic = "force-dynamic";
@@ -25,45 +28,52 @@ export default async function NewsDetailPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      <section className="mx-auto max-w-3xl px-4 py-12">
-        <div className="mb-6 text-xs text-neutral-500">
-          <Link
-            href="/news"
-            className="inline-flex items-center gap-1 font-medium text-emerald-700 hover:text-emerald-800"
-          >
-            ← お知らせ一覧へ戻る
-          </Link>
-        </div>
+    <div className="min-h-screen bg-white">
+      <PageHero page="news" />
 
-        <div className="mb-3 flex flex-wrap items-baseline gap-3">
-          <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700">
-            {news.category || "NEWS"}
-          </span>
-          <time className="text-xs text-neutral-500" dateTime={news.date.toISOString()}>
-            {formatNewsDate(news.date)}
-          </time>
-        </div>
+      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <Link
+          href="/news"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-600 transition hover:text-neutral-950"
+        >
+          ← お知らせ一覧へ戻る
+        </Link>
 
-        <h1 className="mb-4 text-2xl font-bold tracking-tight sm:text-3xl">
-          {news.title}
-        </h1>
+        <header className="mt-8 border-b border-neutral-200 pb-8">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="rounded-full bg-neutral-950 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+              {getNewsCategoryLabel(news.category)}
+            </span>
+            <time className="text-sm text-neutral-500" dateTime={news.date.toISOString()}>
+              {formatNewsDate(news.date)}
+            </time>
+          </div>
 
-        {news.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={news.imageUrl}
-            alt=""
-            className="mb-6 aspect-[16/9] w-full rounded-2xl border border-neutral-200/80 object-cover shadow-sm"
-          />
-        ) : null}
+          <h1 className="mt-5 text-3xl font-extrabold leading-tight tracking-tight text-neutral-950 sm:text-4xl">
+            {news.title}
+          </h1>
+        </header>
 
-        <article className="rounded-2xl border border-neutral-200/80 bg-white px-5 py-6 shadow-sm sm:px-6 sm:py-7">
-          <div className="whitespace-pre-wrap text-sm leading-7 text-neutral-800 sm:text-base">
+        <section className="py-9">
+          <div className="whitespace-pre-wrap text-base leading-8 text-neutral-800">
             {news.content}
           </div>
-        </article>
-      </section>
+        </section>
+
+        {news.imageUrl ? (
+          <figure className="border-t border-neutral-200 pt-8">
+            <div className="relative mx-auto aspect-[16/9] max-w-2xl overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 shadow-sm">
+              <Image
+                src={news.imageUrl}
+                alt=""
+                fill
+                sizes="(min-width: 768px) 672px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </figure>
+        ) : null}
+      </article>
     </div>
   );
 }

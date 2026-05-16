@@ -13,7 +13,6 @@ model News {
   title       String
   category    String?
   date        DateTime @default(now())
-  excerpt     String?
   content     String
   imageUrl    String?
   isPublished Boolean  @default(false)

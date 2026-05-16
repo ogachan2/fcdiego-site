@@ -27,7 +27,6 @@ export async function POST(req: Request) {
         title,
         content,
         category: body.category ? String(body.category).trim() : null,
-        excerpt: body.excerpt ? String(body.excerpt).trim() : null,
         imageUrl: body.imageUrl ? String(body.imageUrl).trim() : null,
         isPublished: Boolean(body.isPublished),
         date: body.date ? new Date(String(body.date)) : new Date(),

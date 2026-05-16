@@ -1,14 +1,13 @@
-// src/components/PageHero.tsx
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 
-type PageKey = "about" | "results" | "teams" | "join" | "contact";
+type PageKey = "about" | "results" | "teams" | "join" | "contact" | "news";
 
 type PageHeroConfig = {
-  title: string;      // 英語タイトル（大きく表示）
-  subtitle: string;   // 日本語サブタイトル（小さく表示）
-  image: string;      // public 配下のパス
+  title: string;
+  subtitle: string;
+  image: string;
 };
 
 const PAGE_HERO_CONFIG: Record<PageKey, PageHeroConfig> = {
@@ -19,7 +18,7 @@ const PAGE_HERO_CONFIG: Record<PageKey, PageHeroConfig> = {
   },
   results: {
     title: "RESULTS",
-    subtitle: "過去の成績",
+    subtitle: "過去の戦績",
     image: "/hero-results.jpg",
   },
   teams: {
@@ -37,6 +36,11 @@ const PAGE_HERO_CONFIG: Record<PageKey, PageHeroConfig> = {
     subtitle: "お問い合わせ",
     image: "/hero-contact.jpg",
   },
+  news: {
+    title: "NEWS",
+    subtitle: "お知らせ",
+    image: "/hero-news.jpg",
+  },
 };
 
 type Props = {
@@ -47,26 +51,15 @@ export default function PageHero({ page }: Props) {
   const cfg = PAGE_HERO_CONFIG[page];
 
   return (
-    <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
-      {/* 背景画像 */}
-      <Image
-        src={cfg.image}
-        alt={cfg.title}
-        fill
-        priority
-        className="object-cover"
-      />
-      {/* オーバーレイ */}
+    <section className="relative h-[40vh] overflow-hidden md:h-[50vh]">
+      <Image src={cfg.image} alt={cfg.title} fill priority className="object-cover" />
       <div className="absolute inset-0 bg-black/45" />
 
-      {/* 中央テキスト */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-[0.2em] uppercase">
+        <h1 className="text-3xl font-semibold uppercase tracking-[0.2em] md:text-4xl">
           {cfg.title}
         </h1>
-        <p className="mt-3 text-sm md:text-base tracking-wide">
-          {cfg.subtitle}
-        </p>
+        <p className="mt-3 text-sm tracking-wide md:text-base">{cfg.subtitle}</p>
       </div>
     </section>
   );

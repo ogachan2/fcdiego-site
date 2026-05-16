@@ -9,14 +9,14 @@ export default async function AdminNewsNewPage() {
 
   return (
     <div className="min-h-screen bg-neutral-50">
-      <section className="mx-auto max-w-4xl px-4 py-12">
+      <section className="mx-auto max-w-6xl px-4 py-12">
         <header className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
             Admin
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight">News新規作成</h1>
           <p className="mt-3 text-sm text-neutral-600">
-            公式サイトに掲載するお知らせを作成します。
+            公式サイトに掲載するお知らせを作成します。公開前に右側のプレビューで見え方を確認できます。
           </p>
         </header>
 

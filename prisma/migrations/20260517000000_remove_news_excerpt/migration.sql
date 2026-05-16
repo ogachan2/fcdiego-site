@@ -1,0 +1,1 @@
+ALTER TABLE "News" DROP COLUMN IF EXISTS "excerpt";
