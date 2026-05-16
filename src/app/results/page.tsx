@@ -15,7 +15,8 @@ const results: YearBlock[] = [
     year: 2025,
     items: [
       // ↓スクショから読めた範囲を初期投入。数値は要確認。
-      "全国大学同好会サッカー選手権大会 九州予選 準優勝（ELAN）", // TODO: 要確認
+      "全国大学同好会サッカー選手権大会 九州予選 準優勝（ELAN）",
+      "全国大学同好会サッカー選手権大会 全国大会 10位 (ELAN)", // TODO: 要確認
     ],
   },
   {
@@ -91,7 +92,7 @@ export default function ResultsPage() {
         <header className="text-center space-y-3">
           <h1 className="text-4xl font-extrabold tracking-tight">Results</h1>
           <p className="text-neutral-600">
-            年度ごとの主な戦績を掲載しています。太字・補足などは自由に加筆してください。
+            年度ごとの主な戦績を掲載しています。
           </p>
         </header>
       </Reveal>
@@ -134,7 +135,7 @@ export default function ResultsPage() {
       </section>
 
       {/* 編集メモ */}
-      <Reveal>
+      {/* <Reveal>
         <aside className="mt-8 rounded-xl border bg-neutral-50 p-4 text-sm text-neutral-600">
           <p className="mb-1 font-semibold">編集メモ</p>
           <ul className="list-disc pl-5 space-y-1">
@@ -143,7 +144,7 @@ export default function ResultsPage() {
             <li>必要なら年度を追加（例：<code>{`{ year: 2025, items: [] }`}</code>）。</li>
           </ul>
         </aside>
-      </Reveal>
+      </Reveal> */}
     </div>
    </>
   );
